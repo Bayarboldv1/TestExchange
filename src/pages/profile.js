@@ -1,5 +1,5 @@
-import React from 'react';
-import { Tab, Row, Col, Nav } from 'react-bootstrap';
+import React from "react";
+import { Tab, Row, Col, Nav } from "react-bootstrap";
 
 export default function profile() {
   return (
@@ -29,7 +29,7 @@ export default function profile() {
                         <h5 className="card-title">General Information</h5>
                         <div className="settings-profile">
                           <form>
-                            <img src={'img/avatar.svg'} alt="avatar" />
+                            <img src={"img/avatar.svg"} alt="avatar" />
                             <div className="custom-file">
                               <input
                                 type="file"
@@ -251,10 +251,10 @@ export default function profile() {
                             <Nav.Item>
                               <Nav.Link
                                 eventKey="wallet_BTC"
-                                className="d-flex justify-content-between align-items-center active"
+                                className="d-flex justify-content-between align-items-center"
                               >
                                 <div className="d-flex">
-                                  <img src={'img/icon/18.png'} alt="btc" />
+                                  <img src={"img/icon/18.png"} alt="btc" />
                                   <div>
                                     <h2>BTC</h2>
                                     <p>Bitcoin</p>
@@ -263,7 +263,7 @@ export default function profile() {
                                 <div>
                                   <h3>4.5484254</h3>
                                   <p className="text-right">
-                                    <i className="icon ion-md-lock"></i>{' '}
+                                    <i className="icon ion-md-lock"></i>{" "}
                                     0.0000000
                                   </p>
                                 </div>
@@ -275,7 +275,7 @@ export default function profile() {
                                 className="d-flex justify-content-between align-items-center"
                               >
                                 <div className="d-flex">
-                                  <img src={'img/icon/1.png'} alt="btc" />
+                                  <img src={"img/icon/1.png"} alt="btc" />
                                   <div>
                                     <h2>ETH</h2>
                                     <p>Ethereum</p>
@@ -284,7 +284,7 @@ export default function profile() {
                                 <div>
                                   <h3>13.454845</h3>
                                   <p className="text-right">
-                                    <i className="icon ion-md-lock"></i>{' '}
+                                    <i className="icon ion-md-lock"></i>{" "}
                                     0.0000000
                                   </p>
                                 </div>
@@ -296,7 +296,7 @@ export default function profile() {
                                 className="d-flex justify-content-between align-items-center"
                               >
                                 <div className="d-flex">
-                                  <img src={'img/icon/9.png'} alt="btc" />
+                                  <img src={"img/icon/9.png"} alt="btc" />
                                   <div>
                                     <h2>BNB</h2>
                                     <p>Binance</p>
@@ -305,7 +305,7 @@ export default function profile() {
                                 <div>
                                   <h3>35.4842458</h3>
                                   <p className="text-right">
-                                    <i className="icon ion-md-lock"></i>{' '}
+                                    <i className="icon ion-md-lock"></i>{" "}
                                     0.0000000
                                   </p>
                                 </div>
@@ -317,7 +317,7 @@ export default function profile() {
                                 className="d-flex justify-content-between align-items-center"
                               >
                                 <div className="d-flex">
-                                  <img src={'img/icon/6.png'} alt="btc" />
+                                  <img src={"img/icon/6.png"} alt="btc" />
                                   <div>
                                     <h2>TRX</h2>
                                     <p>Tron</p>
@@ -326,7 +326,7 @@ export default function profile() {
                                 <div>
                                   <h3>4.458941</h3>
                                   <p className="text-right">
-                                    <i className="icon ion-md-lock"></i>{' '}
+                                    <i className="icon ion-md-lock"></i>{" "}
                                     0.0000000
                                   </p>
                                 </div>
@@ -338,7 +338,7 @@ export default function profile() {
                                 className="d-flex justify-content-between align-items-center"
                               >
                                 <div className="d-flex">
-                                  <img src={'img/icon/2.png'} alt="btc" />
+                                  <img src={"img/icon/2.png"} alt="btc" />
                                   <div>
                                     <h2>EOS</h2>
                                     <p>Eosio</p>
@@ -347,7 +347,7 @@ export default function profile() {
                                 <div>
                                   <h3>33.478951</h3>
                                   <p className="text-right">
-                                    <i className="icon ion-md-lock"></i>{' '}
+                                    <i className="icon ion-md-lock"></i>{" "}
                                     0.0000000
                                   </p>
                                 </div>
@@ -359,7 +359,7 @@ export default function profile() {
                                 className="d-flex justify-content-between align-items-center"
                               >
                                 <div className="d-flex">
-                                  <img src={'img/icon/7.png'} alt="btc" />
+                                  <img src={"img/icon/7.png"} alt="btc" />
                                   <div>
                                     <h2>XMR</h2>
                                     <p>Monero</p>
@@ -368,7 +368,7 @@ export default function profile() {
                                 <div>
                                   <h3>99.465975</h3>
                                   <p className="text-right">
-                                    <i className="icon ion-md-lock"></i>{' '}
+                                    <i className="icon ion-md-lock"></i>{" "}
                                     0.0000000
                                   </p>
                                 </div>
@@ -380,7 +380,7 @@ export default function profile() {
                                 className="d-flex justify-content-between align-items-center"
                               >
                                 <div className="d-flex">
-                                  <img src={'img/icon/4.png'} alt="btc" />
+                                  <img src={"img/icon/4.png"} alt="btc" />
                                   <div>
                                     <h2>KCS</h2>
                                     <p>Kstarcoin</p>
@@ -389,7 +389,7 @@ export default function profile() {
                                 <div>
                                   <h3>114.57564</h3>
                                   <p className="text-right">
-                                    <i className="icon ion-md-lock"></i>{' '}
+                                    <i className="icon ion-md-lock"></i>{" "}
                                     0.0000000
                                   </p>
                                 </div>
@@ -461,7 +461,7 @@ export default function profile() {
                                     </div>
                                     <div className="col-md-4">
                                       <img
-                                        src={'img/qr-code-dark.svg'}
+                                        src={"img/qr-code-dark.svg"}
                                         alt="qr-code"
                                       />
                                     </div>
@@ -591,7 +591,7 @@ export default function profile() {
                                     </div>
                                     <div className="col-md-4">
                                       <img
-                                        src={'img/qr-code-dark.svg'}
+                                        src={"img/qr-code-dark.svg"}
                                         alt="qr-code"
                                       />
                                     </div>
@@ -721,7 +721,7 @@ export default function profile() {
                                     </div>
                                     <div className="col-md-4">
                                       <img
-                                        src={'img/qr-code-dark.svg'}
+                                        src={"img/qr-code-dark.svg"}
                                         alt="qr-code"
                                       />
                                     </div>
@@ -851,7 +851,7 @@ export default function profile() {
                                     </div>
                                     <div className="col-md-4">
                                       <img
-                                        src={'img/qr-code-dark.svg'}
+                                        src={"img/qr-code-dark.svg"}
                                         alt="qr-code"
                                       />
                                     </div>
@@ -981,7 +981,7 @@ export default function profile() {
                                     </div>
                                     <div className="col-md-4">
                                       <img
-                                        src={'img/qr-code-dark.svg'}
+                                        src={"img/qr-code-dark.svg"}
                                         alt="qr-code"
                                       />
                                     </div>
@@ -1111,7 +1111,7 @@ export default function profile() {
                                     </div>
                                     <div className="col-md-4">
                                       <img
-                                        src={'img/qr-code-dark.svg'}
+                                        src={"img/qr-code-dark.svg"}
                                         alt="qr-code"
                                       />
                                     </div>
@@ -1241,7 +1241,7 @@ export default function profile() {
                                     </div>
                                     <div className="col-md-4">
                                       <img
-                                        src={'img/qr-code-dark.svg'}
+                                        src={"img/qr-code-dark.svg"}
                                         alt="qr-code"
                                       />
                                     </div>
@@ -1399,7 +1399,7 @@ export default function profile() {
                               <div className="notification-info">
                                 <p>Phone Notify</p>
                                 <span>
-                                  Get transition notification in your phone{' '}
+                                  Get transition notification in your phone{" "}
                                 </span>
                               </div>
                               <div className="custom-control custom-switch">

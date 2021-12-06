@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function login() {
   return (
@@ -7,12 +7,12 @@ export default function login() {
       <div className="vh-100 d-flex justify-content-center">
         <div className="form-access my-auto">
           <form>
-            <span>Sign In</span>
+            <span>Нэвтрэх</span>
             <div className="form-group">
               <input
                 type="email"
                 className="form-control"
-                placeholder="Email Address"
+                placeholder="Email Хаяг"
                 required
               />
             </div>
@@ -20,12 +20,12 @@ export default function login() {
               <input
                 type="password"
                 className="form-control"
-                placeholder="Password"
+                placeholder="Нууц Үг"
                 required
               />
             </div>
             <div className="text-right">
-              <Link to="/reset">Forgot Password?</Link>
+              <Link to="/reset">Нууц үгээ мартсан?</Link>
             </div>
             <div className="custom-control custom-checkbox">
               <input
@@ -34,15 +34,17 @@ export default function login() {
                 id="form-checkbox"
               />
               <label className="custom-control-label" htmlFor="form-checkbox">
-                Remember me
+                Намайг сана
               </label>
             </div>
-            <button type="submit" className="btn btn-primary">
-              Sign In
-            </button>
+            <Link to="/markets">
+              <button type="submit" className="btn btn-primary">
+                Нэвтрэх
+              </button>
+            </Link>
           </form>
           <h2>
-            Don't have an account? <Link to="/signup">Sign up here</Link>
+            Шинэ хэрэглэгч? <Link to="/signup">Бүртгүүлэх</Link>
           </h2>
         </div>
       </div>

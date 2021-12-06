@@ -1,5 +1,5 @@
-import React from 'react';
-import { Tabs, Tab } from 'react-bootstrap';
+import React from "react";
+import { Tabs, Tab } from "react-bootstrap";
 
 export default function MarketTrade() {
   return (

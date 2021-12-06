@@ -1,5 +1,6 @@
-import React from 'react';
-import { Tab, Row, Col, Nav } from 'react-bootstrap';
+import React from "react";
+import { Tab, Row, Col, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 export default function settings() {
   return (
     <>
@@ -10,13 +11,13 @@ export default function settings() {
               <Col lg={3}>
                 <Nav variant="pills" className="settings-nav">
                   <Nav.Item>
-                    <Nav.Link eventKey="profile">Profile</Nav.Link>
+                    <Nav.Link eventKey="profile">Хэрэглэгч</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="wallet">Wallet</Nav.Link>
+                    <Nav.Link eventKey="wallet">Хэтэвч</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="settings">Settings</Nav.Link>
+                    <Nav.Link eventKey="settings">Тохиргоо</Nav.Link>
                   </Nav.Item>
                 </Nav>
               </Col>
@@ -28,7 +29,7 @@ export default function settings() {
                         <h5 className="card-title">General Information</h5>
                         <div className="settings-profile">
                           <form>
-                            <img src={'img/avatar.svg'} alt="avatar" />
+                            <img src={"img/avatar.svg"} alt="avatar" />
                             <div className="custom-file">
                               <input
                                 type="file"
@@ -104,9 +105,11 @@ export default function settings() {
                                   <option>CHF</option>
                                 </select>
                               </div>
-                              <div className="col-md-12">
-                                <input type="submit" value="Update" />
-                              </div>
+                              <Link to="/test">
+                                <div className="col-md-12">
+                                  <input type="submit" value="Update" />
+                                </div>
+                              </Link>
                             </div>
                           </form>
                         </div>
@@ -253,7 +256,7 @@ export default function settings() {
                                 className="d-flex justify-content-between align-items-center active"
                               >
                                 <div className="d-flex">
-                                  <img src={'img/icon/18.png'} alt="btc" />
+                                  <img src={"img/icon/18.png"} alt="btc" />
                                   <div>
                                     <h2>BTC</h2>
                                     <p>Bitcoin</p>
@@ -262,7 +265,7 @@ export default function settings() {
                                 <div>
                                   <h3>4.5484254</h3>
                                   <p className="text-right">
-                                    <i className="icon ion-md-lock"></i>{' '}
+                                    <i className="icon ion-md-lock"></i>{" "}
                                     0.0000000
                                   </p>
                                 </div>
@@ -274,7 +277,7 @@ export default function settings() {
                                 className="d-flex justify-content-between align-items-center"
                               >
                                 <div className="d-flex">
-                                  <img src={'img/icon/1.png'} alt="btc" />
+                                  <img src={"img/icon/1.png"} alt="btc" />
                                   <div>
                                     <h2>ETH</h2>
                                     <p>Ethereum</p>
@@ -283,7 +286,7 @@ export default function settings() {
                                 <div>
                                   <h3>13.454845</h3>
                                   <p className="text-right">
-                                    <i className="icon ion-md-lock"></i>{' '}
+                                    <i className="icon ion-md-lock"></i>{" "}
                                     0.0000000
                                   </p>
                                 </div>
@@ -295,7 +298,7 @@ export default function settings() {
                                 className="d-flex justify-content-between align-items-center"
                               >
                                 <div className="d-flex">
-                                  <img src={'img/icon/9.png'} alt="btc" />
+                                  <img src={"img/icon/9.png"} alt="btc" />
                                   <div>
                                     <h2>BNB</h2>
                                     <p>Binance</p>
@@ -304,7 +307,7 @@ export default function settings() {
                                 <div>
                                   <h3>35.4842458</h3>
                                   <p className="text-right">
-                                    <i className="icon ion-md-lock"></i>{' '}
+                                    <i className="icon ion-md-lock"></i>{" "}
                                     0.0000000
                                   </p>
                                 </div>
@@ -316,7 +319,7 @@ export default function settings() {
                                 className="d-flex justify-content-between align-items-center"
                               >
                                 <div className="d-flex">
-                                  <img src={'img/icon/6.png'} alt="btc" />
+                                  <img src={"img/icon/6.png"} alt="btc" />
                                   <div>
                                     <h2>TRX</h2>
                                     <p>Tron</p>
@@ -325,7 +328,7 @@ export default function settings() {
                                 <div>
                                   <h3>4.458941</h3>
                                   <p className="text-right">
-                                    <i className="icon ion-md-lock"></i>{' '}
+                                    <i className="icon ion-md-lock"></i>{" "}
                                     0.0000000
                                   </p>
                                 </div>
@@ -337,7 +340,7 @@ export default function settings() {
                                 className="d-flex justify-content-between align-items-center"
                               >
                                 <div className="d-flex">
-                                  <img src={'img/icon/2.png'} alt="btc" />
+                                  <img src={"img/icon/2.png"} alt="btc" />
                                   <div>
                                     <h2>EOS</h2>
                                     <p>Eosio</p>
@@ -346,7 +349,7 @@ export default function settings() {
                                 <div>
                                   <h3>33.478951</h3>
                                   <p className="text-right">
-                                    <i className="icon ion-md-lock"></i>{' '}
+                                    <i className="icon ion-md-lock"></i>{" "}
                                     0.0000000
                                   </p>
                                 </div>
@@ -358,7 +361,7 @@ export default function settings() {
                                 className="d-flex justify-content-between align-items-center"
                               >
                                 <div className="d-flex">
-                                  <img src={'img/icon/7.png'} alt="btc" />
+                                  <img src={"img/icon/7.png"} alt="btc" />
                                   <div>
                                     <h2>XMR</h2>
                                     <p>Monero</p>
@@ -367,7 +370,7 @@ export default function settings() {
                                 <div>
                                   <h3>99.465975</h3>
                                   <p className="text-right">
-                                    <i className="icon ion-md-lock"></i>{' '}
+                                    <i className="icon ion-md-lock"></i>{" "}
                                     0.0000000
                                   </p>
                                 </div>
@@ -379,7 +382,7 @@ export default function settings() {
                                 className="d-flex justify-content-between align-items-center"
                               >
                                 <div className="d-flex">
-                                  <img src={'img/icon/4.png'} alt="btc" />
+                                  <img src={"img/icon/4.png"} alt="btc" />
                                   <div>
                                     <h2>KCS</h2>
                                     <p>Kstarcoin</p>
@@ -388,7 +391,7 @@ export default function settings() {
                                 <div>
                                   <h3>114.57564</h3>
                                   <p className="text-right">
-                                    <i className="icon ion-md-lock"></i>{' '}
+                                    <i className="icon ion-md-lock"></i>{" "}
                                     0.0000000
                                   </p>
                                 </div>
@@ -460,7 +463,7 @@ export default function settings() {
                                     </div>
                                     <div className="col-md-4">
                                       <img
-                                        src={'img/qr-code-dark.svg'}
+                                        src={"img/qr-code-dark.svg"}
                                         alt="qr-code"
                                       />
                                     </div>
@@ -590,7 +593,7 @@ export default function settings() {
                                     </div>
                                     <div className="col-md-4">
                                       <img
-                                        src={'img/qr-code-dark.svg'}
+                                        src={"img/qr-code-dark.svg"}
                                         alt="qr-code"
                                       />
                                     </div>
@@ -720,7 +723,7 @@ export default function settings() {
                                     </div>
                                     <div className="col-md-4">
                                       <img
-                                        src={'img/qr-code-dark.svg'}
+                                        src={"img/qr-code-dark.svg"}
                                         alt="qr-code"
                                       />
                                     </div>
@@ -850,7 +853,7 @@ export default function settings() {
                                     </div>
                                     <div className="col-md-4">
                                       <img
-                                        src={'img/qr-code-dark.svg'}
+                                        src={"img/qr-code-dark.svg"}
                                         alt="qr-code"
                                       />
                                     </div>
@@ -980,7 +983,7 @@ export default function settings() {
                                     </div>
                                     <div className="col-md-4">
                                       <img
-                                        src={'img/qr-code-dark.svg'}
+                                        src={"img/qr-code-dark.svg"}
                                         alt="qr-code"
                                       />
                                     </div>
@@ -1110,7 +1113,7 @@ export default function settings() {
                                     </div>
                                     <div className="col-md-4">
                                       <img
-                                        src={'img/qr-code-dark.svg'}
+                                        src={"img/qr-code-dark.svg"}
                                         alt="qr-code"
                                       />
                                     </div>
@@ -1240,7 +1243,7 @@ export default function settings() {
                                     </div>
                                     <div className="col-md-4">
                                       <img
-                                        src={'img/qr-code-dark.svg'}
+                                        src={"img/qr-code-dark.svg"}
                                         alt="qr-code"
                                       />
                                     </div>
@@ -1398,7 +1401,7 @@ export default function settings() {
                               <div className="notification-info">
                                 <p>Phone Notify</p>
                                 <span>
-                                  Get transition notification in your phone{' '}
+                                  Get transition notification in your phone{" "}
                                 </span>
                               </div>
                               <div className="custom-control custom-switch">

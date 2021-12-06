@@ -43,7 +43,7 @@
   height: 45px;
 }
 
-.settings-profile input[type='submit'] {
+.settings-profile input[type="submit"] {
   background: #007bff;
   color: #fff;
   font-weight: 600;
@@ -155,11 +155,11 @@
 .settings .wallet .tab-content button.green {
   background: #26de81;
   color: #ffffff;
-  box-shadow: 0px 0px 15px 0px #26de81ad;
+  // box-shadow: 0px 0px 15px 0px #26de81ad;
 }
 .settings .wallet .tab-content button.red {
   background: #ff231f;
-  box-shadow: 0px 0px 15px 0px #ff231fad;
+  // box-shadow: 0px 0px 15px 0px #ff231fad;
   color: #ffffff;
 }
 .settings .wallet .tab-content button {

@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { Navbar, Nav, NavDropdown, Dropdown, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { ThemeConsumer } from '../context/ThemeContext';
+import React, { Component } from "react";
+import { Navbar, Nav, NavDropdown, Dropdown, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { ThemeConsumer } from "../context/ThemeContext";
 export default class Header extends Component {
   componentDidMount() {
-    let el = document.querySelector('#darkTheme');
+    let el = document.querySelector("#darkTheme");
     if (el) {
-      el.addEventListener('click', function () {
-        document.body.classList.toggle('dark');
+      el.addEventListener("click", function () {
+        document.body.classList.toggle("dark");
       });
     }
   }
@@ -19,10 +19,10 @@ export default class Header extends Component {
             <Link className="navbar-brand" to="/">
               <ThemeConsumer>
                 {({ data }) => {
-                  return data.theme === 'light' ? (
-                    <img src={'img/logo-dark.svg'} alt="logo" />
+                  return data.theme === "light" ? (
+                    <img src={"img/logo-dark.svg"} alt="logo" />
                   ) : (
-                    <img src={'img/logo-light.svg'} alt="logo" />
+                    <img src={"img/logo-light.svg"} alt="logo" />
                   );
                 }}
               </ThemeConsumer>
@@ -31,22 +31,24 @@ export default class Header extends Component {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="navbar-nav mr-auto">
                 <Link to="/" className="nav-link">
-                  Exchange
+                  Арилжаа
                 </Link>
-                <Link to="/markets" className="nav-link">
+                <Link to="/wallet" className="nav-link">
+                  Хэтэвч
+                </Link>
+                {/* <Link to="/markets" className="nav-link">
                   Markets
-                </Link>
-                <NavDropdown title="Dashboard">
+                </Link> */}
+                {/* <NavDropdown title="Dashboard">
                   <Link to="/profile" className="dropdown-item">
                     Profile
                   </Link>
-                  <Link to="/wallet" className="dropdown-item">
-                    Wallet
-                  </Link>
+                  
                   <Link to="/settings" className="dropdown-item">
                     Settings
                   </Link>
-                </NavDropdown>
+                </NavDropdown> */}
+                {/* 
                 <NavDropdown title="Others">
                   <Link to="/login" className="dropdown-item">
                     Login
@@ -69,14 +71,14 @@ export default class Header extends Component {
                   <Link to="/notfound" className="dropdown-item">
                     404
                   </Link>
-                </NavDropdown>
+                </NavDropdown> */}
               </Nav>
               <Nav className="navbar-nav ml-auto">
                 <Dropdown className="header-custom-icon">
                   <ThemeConsumer>
                     {({ data, update }) => (
                       <Button variant="default" onClick={update} id="darkTheme">
-                        {data.theme === 'light' ? (
+                        {data.theme === "light" ? (
                           <i className="icon ion-md-moon"></i>
                         ) : (
                           <i className="icon ion-md-sunny"></i>
@@ -90,9 +92,7 @@ export default class Header extends Component {
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <div className="dropdown-header d-flex align-items-center justify-content-between">
-                      <p className="mb-0 font-weight-medium">
-                        6 New Notifications
-                      </p>
+                      <p className="mb-0 font-weight-medium">6 Шинэ Мэдэгдэл</p>
                       <a href="#!" className="text-muted">
                         Clear all
                       </a>
@@ -151,12 +151,12 @@ export default class Header extends Component {
                 </Dropdown>
                 <Dropdown className="header-img-icon">
                   <Dropdown.Toggle variant="default">
-                    <img src={'img/avatar.svg'} alt="avatar" />
+                    <img src={"img/avatar.svg"} alt="avatar" />
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <div className="dropdown-header d-flex flex-column align-items-center">
                       <div className="figure mb-3">
-                        <img src={'img/avatar.svg'} alt="" />
+                        <img src={"img/avatar.svg"} alt="" />
                       </div>
                       <div className="info text-center">
                         <p className="name font-weight-bold mb-0">Tony Stark</p>
@@ -170,25 +170,25 @@ export default class Header extends Component {
                         <li className="nav-item">
                           <Link to="/profile" className="nav-link">
                             <i className="icon ion-md-person"></i>
-                            <span>Profile</span>
+                            <span>Хэрэглэгч</span>
                           </Link>
                         </li>
                         <li className="nav-item">
                           <Link to="/wallet" className="nav-link">
                             <i className="icon ion-md-wallet"></i>
-                            <span>My Wallet</span>
+                            <span>Хэтэвч</span>
                           </Link>
                         </li>
                         <li className="nav-item">
                           <Link to="/settings" className="nav-link">
                             <i className="icon ion-md-settings"></i>
-                            <span>Settings</span>
+                            <span>Тохиргоо</span>
                           </Link>
                         </li>
                         <li className="nav-item">
                           <Link to="/login" className="nav-link red">
                             <i className="icon ion-md-power"></i>
-                            <span>Log Out</span>
+                            <span>Гарах</span>
                           </Link>
                         </li>
                       </ul>

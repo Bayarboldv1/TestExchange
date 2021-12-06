@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function reset() {
   return (
@@ -7,18 +7,18 @@ export default function reset() {
       <div className="vh-100 d-flex justify-content-center">
         <div className="form-access my-auto">
           <form>
-            <span>Reset password</span>
+            <span>Нууц Үг Сэргээх</span>
             <input
               type="email"
               className="form-control"
-              placeholder="Enter Your Email Address"
+              placeholder="Email хаягаа оруулна уу"
             />
             <button type="submit" className="btn btn-primary">
-              Reset
+              Сэргээх
             </button>
             <h2>
-              Remember Password?
-              <Link to="/login"> Sign in here</Link>
+              Нууц үгээ санасан?
+              <Link to="/login"> Нэвтрэх</Link>
             </h2>
           </form>
         </div>

@@ -1,20 +1,21 @@
-import React from 'react';
-import Layout from '../components/Layout';
-import { Switch, Route } from 'react-router-dom';
-import Exchange from '../pages/exchange';
-import Markets from '../pages/markets';
-import Profile from './profile';
-import Wallet from './wallet';
-import Settings from './settings';
-import Login from './login';
-import Reset from './reset';
-import OtpVerify from './otp-verify';
-import OtpNumber from './otp-number';
-import Lock from './lock';
-import TermsAndConditions from './terms-and-conditions';
-import NewsDetails from './news-details';
-import Signup from './signup';
-import Notfound from './notfound';
+import React from "react";
+import Layout from "../components/Layout";
+import { Switch, Route } from "react-router-dom";
+import Exchange from "../pages/exchange";
+import Markets from "../pages/markets";
+import Profile from "./profile";
+import Wallet from "./wallet";
+import Settings from "./settings";
+import Login from "./login";
+import Reset from "./reset";
+import OtpVerify from "./otp-verify";
+import OtpNumber from "./otp-number";
+import Lock from "./lock";
+import TermsAndConditions from "./terms-and-conditions";
+import NewsDetails from "./news-details";
+import Signup from "./signup";
+import Notfound from "./notfound";
+import Test from "./test";
 
 export default function index() {
   return (
@@ -62,6 +63,9 @@ export default function index() {
           </Route>
           <Route path="/notfound">
             <Notfound />
+          </Route>
+          <Route path="/test">
+            <Test />
           </Route>
         </Switch>
       </Layout>

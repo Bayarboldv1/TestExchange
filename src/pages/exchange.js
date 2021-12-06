@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import HistoryOrder from '../components/HistoryOrder';
-import MarketHistory from '../components/MarketHistory';
-import MarketNews from '../components/MarketNews';
-import MarketPairs from '../components/MarketPairs';
-import MarketTrade from '../components/MarketTrade';
-import OrderBook from '../components/OrderBook';
-import TradingChart from '../components/TradingChart';
-import TradingChartDark from '../components/TradingChartDark';
-import { ThemeConsumer } from '../context/ThemeContext';
+import React, { Component } from "react";
+import HistoryOrder from "../components/HistoryOrder";
+import MarketHistory from "../components/MarketHistory";
+import MarketNews from "../components/MarketNews";
+import MarketPairs from "../components/MarketPairs";
+import MarketTrade from "../components/MarketTrade";
+import OrderBook from "../components/OrderBook";
+import TradingChart from "../components/TradingChart";
+import TradingChartDark from "../components/TradingChartDark";
+import { ThemeConsumer } from "../context/ThemeContext";
 
 export default class exchange extends Component {
   render() {
@@ -21,7 +21,7 @@ export default class exchange extends Component {
             <div className="col-sm-12 col-md-6">
               <ThemeConsumer>
                 {({ data }) => {
-                  return data.theme === 'light' ? (
+                  return data.theme === "light" ? (
                     <TradingChart />
                   ) : (
                     <TradingChartDark />
