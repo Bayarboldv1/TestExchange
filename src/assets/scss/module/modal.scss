@@ -33,19 +33,16 @@
   flex-direction: column;
   padding: 20px;
 }
-
 .modalContainer .title {
   display: inline-block;
   text-align: center;
   margin-top: 10px;
   color: rgb(38, 38, 44);
 }
-
 .titleCloseBtn {
   display: flex;
   justify-content: flex-end;
 }
-
 .titleCloseBtn button {
   background-color: transparent;
   border: none;
@@ -80,14 +77,12 @@
   flex-direction: column;
   color: rgb(66, 65, 71);
 }
-
 .modalContainer .footer {
   //   flex: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .modalContainer .footer button {
   width: 150px;
   height: 45px;
@@ -99,12 +94,17 @@
   font-size: 20px;
   cursor: pointer;
 }
-
 #cancelBtn {
   //   border: 1px solid cornflowerblue;
-  background-color: rgb(156, 200, 238);
+  background-color: rgb(231, 149, 134);
 }
-
 .btext li {
   color: rgb(114, 117, 128);
+}
+
+//--------------------------------------->OutModal styles
+
+.obody {
+  margin-bottom: 100px;
+  margin-top: -10%;
 }

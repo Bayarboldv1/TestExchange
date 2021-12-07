@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Tabs, Tab, Alert } from "react-bootstrap";
 import Modal from "./Modal";
+import OutModal from "./OutModal";
 
 export default function MarketsList() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [outModalOpen, setOutModalOpen] = useState(false);
+  const [value, setValue] = useState("");
   return (
     <>
       <div className="markets pb70">
@@ -37,7 +40,13 @@ export default function MarketsList() {
                         <td>7394.06</td>
                         <td className="green">+0.78%</td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Орлого
                           </button>
                         </td>
@@ -66,7 +75,12 @@ export default function MarketsList() {
                           >
                             Орлого
                           </button>
-                          {modalOpen && <Modal setOpenModal={setModalOpen} />}
+                          {modalOpen && (
+                            <Modal const setOpenModal={setModalOpen} />
+                          )}
+                          {outModalOpen && (
+                            <OutModal const setOpenOutModal={setOutModalOpen} />
+                          )}
                         </td>
                         <td>
                           <button type="button" class="btn btn-sm btn-link ">
@@ -85,12 +99,24 @@ export default function MarketsList() {
                         <td>4582.06</td>
                         <td className="green">+2.62%</td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Орлого
                           </button>
                         </td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setOutModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Зарлага
                           </button>
                         </td>
@@ -106,7 +132,13 @@ export default function MarketsList() {
                         <td>7394.06</td>
                         <td className="red">-0.94%</td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Орлого
                           </button>
                         </td>
@@ -126,7 +158,13 @@ export default function MarketsList() {
                         <td>7394.06</td>
                         <td className="green">+0.78%</td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Орлого
                           </button>
                         </td>
@@ -146,7 +184,13 @@ export default function MarketsList() {
                         <td>7394.06</td>
                         <td className="green">+0.71%</td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Орлого
                           </button>
                         </td>
@@ -166,7 +210,13 @@ export default function MarketsList() {
                         <td>7394.06</td>
                         <td className="red">-0.73%</td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Орлого
                           </button>
                         </td>
@@ -186,7 +236,13 @@ export default function MarketsList() {
                         <td>7394.06</td>
                         <td className="red">-1.20%</td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Орлого
                           </button>
                         </td>
@@ -206,7 +262,13 @@ export default function MarketsList() {
                         <td>7394.06</td>
                         <td className="green">+0.74%</td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Орлого
                           </button>
                         </td>
@@ -226,7 +288,13 @@ export default function MarketsList() {
                         <td>7394.06</td>
                         <td className="red">-0.78%</td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Орлого
                           </button>
                         </td>
