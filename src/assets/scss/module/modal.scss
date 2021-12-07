@@ -6,33 +6,39 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: -25%;
+  margin-top: 5%;
 }
 .qrt {
-  height: 100px;
-  width: 100px;
-  border: 1px solid red;
+  height: 250px;
+  width: 250px;
 }
-.qr {
+.qrt p {
+  color: rgb(73, 123, 216);
+  position: absolute;
+}
+.qrt img {
   width: 100%;
-  width: 100%;
-  display: flex;
-  flex: 1;
+  height: 100%;
+  margin-top: -20px;
+  margin-left: -10px;
 }
 .modalContainer {
   width: 500px;
   height: 500px;
-  border-radius: 12px;
-  background-color: greenyellow;
+  border-radius: 8px;
+  background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   flex-direction: column;
-  padding: 25px;
+  padding: 20px;
 }
 
 .modalContainer .title {
   display: inline-block;
   text-align: center;
   margin-top: 10px;
+  color: rgb(38, 38, 44);
 }
 
 .titleCloseBtn {
@@ -46,20 +52,37 @@
   font-size: 25px;
   cursor: pointer;
 }
-
+.copy .btn {
+  margin-left: 350px;
+}
+.copy p {
+  color: black;
+}
+.lbody {
+  position: absolute;
+  flex-direction: column;
+  margin-top: 150px;
+}
+.btext {
+  color: black;
+  width: 65%;
+  margin-left: 150px;
+  margin-top: -210px;
+}
 .modalContainer .body {
   flex: 100%;
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: center;
   flex-direction: column;
+  color: rgb(66, 65, 71);
 }
 
 .modalContainer .footer {
-  flex: 20%;
+  //   flex: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,4 +103,8 @@
 #cancelBtn {
   //   border: 1px solid cornflowerblue;
   background-color: rgb(156, 200, 238);
+}
+
+.btext li {
+  color: rgb(114, 117, 128);
 }

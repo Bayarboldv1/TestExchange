@@ -438,7 +438,7 @@ export default function wallet() {
                                     Wallet Deposit Address
                                   </h5>
                                   <div className="row wallet-address">
-                                    <div className="col-md-8">
+                                    <div className="col -md-8">
                                       <p>
                                         Deposits to this address are unlimited.
                                         Note that you may not be able to
