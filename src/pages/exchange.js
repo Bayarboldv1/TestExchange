@@ -21,7 +21,7 @@ export default class exchange extends Component {
             <div className="col-sm-12 col-md-6">
               <ThemeConsumer>
                 {({ data }) => {
-                  return data.theme === "light" ? (
+                  return data.theme === "dark" ? (
                     <TradingChart />
                   ) : (
                     <TradingChartDark />

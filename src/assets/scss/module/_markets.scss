@@ -48,16 +48,30 @@
   left: 15px;
   font-size: 16px;
 }
-
+.market .markets-pair-list {
+  width: 70%;
+  margin-left: 25%;
+}
 .markets-pair-list th,
 .markets-pair-list td {
   padding: 15px !important;
   width: 16%;
   font-size: 14px;
 }
+.markets-pair-list {
+  align-self: center;
+  justify-content: center;
+  margin-left: 20%;
+}
 
+.markets-pair-list h2 {
+  color: #007bff;
+}
+.markets-pair-list h5 {
+  color: #007bff;
+}
 .markets-pair-list tbody tr td i {
-  color: #75869696;
+  color: #968e7596;
 }
 
 .markets-pair-list .nav-link.active {

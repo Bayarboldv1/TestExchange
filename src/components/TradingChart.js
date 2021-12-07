@@ -1,5 +1,5 @@
-import React from 'react';
-import TradingViewWidget, { Themes } from 'react-tradingview-widget';
+import React from "react";
+import TradingViewWidget, { Themes } from "react-tradingview-widget";
 
 export default function TradingChart() {
   return (

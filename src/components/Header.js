@@ -16,7 +16,7 @@ export default class Header extends Component {
       <>
         <header className="light-bb">
           <Navbar expand="lg">
-            <Link className="navbar-brand" to="/">
+            {/* <Link className="navbar-brand" to="/">
               <ThemeConsumer>
                 {({ data }) => {
                   return data.theme === "light" ? (
@@ -26,14 +26,14 @@ export default class Header extends Component {
                   );
                 }}
               </ThemeConsumer>
-            </Link>
+            </Link> */}
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="navbar-nav mr-auto">
                 <Link to="/" className="nav-link">
                   Арилжаа
                 </Link>
-                <Link to="/wallet" className="nav-link">
+                <Link to="/markets" className="nav-link">
                   Хэтэвч
                 </Link>
                 {/* <Link to="/markets" className="nav-link">
@@ -78,7 +78,7 @@ export default class Header extends Component {
                   <ThemeConsumer>
                     {({ data, update }) => (
                       <Button variant="default" onClick={update} id="darkTheme">
-                        {data.theme === "light" ? (
+                        {data.theme === "dark" ? (
                           <i className="icon ion-md-moon"></i>
                         ) : (
                           <i className="icon ion-md-sunny"></i>

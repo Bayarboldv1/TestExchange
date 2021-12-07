@@ -1,6 +1,6 @@
 .market-pairs {
-  border: 1px solid #e0e3eb;
-  padding-top: 14px;
+  border: 1px solid #ebe4e0;
+  padding-top: 24px;
   border-radius: 2px;
 }
 .market-pairs .input-group {
@@ -40,6 +40,7 @@
 
 .table {
   margin-bottom: 0;
+  margin-top: 100;
 }
 .table td {
   font-size: 13px;
@@ -66,7 +67,8 @@
 .no-fluid .market-pairs tbody {
   height: 815px;
 }
-.market-pairs table,
+.market-pairs table {
+}
 .market-pairs tr {
   width: 100%;
   table-layout: fixed;
