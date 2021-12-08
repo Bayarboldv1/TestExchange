@@ -16,7 +16,7 @@ import NewsDetails from "./news-details";
 import Signup from "./signup";
 import Notfound from "./notfound";
 import Test from "./test";
-import Id from "./id";
+import Id from "./settings/id";
 
 export default function index() {
   return (
