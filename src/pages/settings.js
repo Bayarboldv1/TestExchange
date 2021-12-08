@@ -8,7 +8,7 @@ export default function settings() {
         <div className="container-fluid">
           <Tab.Container defaultActiveKey="settings">
             <Row>
-              <Col lg={3}>
+              {/* <Col lg={3}>
                 <Nav variant="pills" className="settings-nav">
                   <Nav.Item>
                     <Nav.Link eventKey="profile">Хэрэглэгч</Nav.Link>
@@ -20,10 +20,10 @@ export default function settings() {
                     <Nav.Link eventKey="settings">Тохиргоо</Nav.Link>
                   </Nav.Item>
                 </Nav>
-              </Col>
+              </Col> */}
               <Col lg={9}>
                 <Tab.Content>
-                  <Tab.Pane eventKey="profile">
+                  {/* <Tab.Pane eventKey="profile">
                     <div className="card">
                       <div className="card-body">
                         <h5 className="card-title">General Information</h5>
@@ -1316,30 +1316,36 @@ export default function settings() {
                         </Col>
                       </Row>
                     </div>
-                  </Tab.Pane>
-                  <Tab.Pane eventKey="settings">
+                  </Tab.Pane> */}
+                  <Tab.Pane eventKey="settings" className="col-md-11">
                     <div className="card">
                       <div className="card-body">
-                        <h5 className="card-title">Notifications</h5>
+                        <h5 className="card-title">Тохиргоо</h5>
                         <div className="settings-notification">
                           <ul>
                             <li>
                               <div className="notification-info">
-                                <p>Update price</p>
+                                <p>Хэрэглэгчийн мэдээлэл баталгаажуулах</p>
                                 <span>
-                                  Get the update price in your dashboard
+                                  Хэрэглэгчийн мэдээлэл баталгаажсанаар арилжаа
+                                  хийх эрх нээгдэнэ
                                 </span>
                               </div>
-                              <div className="custom-control custom-switch">
-                                <input
-                                  type="checkbox"
-                                  className="custom-control-input"
-                                  id="notification1"
-                                />
-                                <label
-                                  className="custom-control-label"
-                                  htmlFor="notification1"
-                                ></label>
+                              <div className="custom-control">
+                                <Link to="/id">
+                                  <button
+                                    type="submit"
+                                    className="btn btn-primary btn-sm"
+                                  >
+                                    Баталгаажуулах
+                                  </button>
+                                </Link>
+                                {/* <input
+                                  className="btn btn-primary btn-sm"
+                                  type="submit"
+                                  id="banksubmit"
+                                  value="Баталгаажуулах"
+                                /> */}
                               </div>
                             </li>
                             <li>
@@ -1354,7 +1360,6 @@ export default function settings() {
                                   type="checkbox"
                                   className="custom-control-input"
                                   id="notification2"
-                                  checked
                                 />
                                 <label
                                   className="custom-control-label"
@@ -1417,39 +1422,22 @@ export default function settings() {
                                 ></label>
                               </div>
                             </li>
+                            <li>
+                              <div className="notification-info">
+                                <p>Банкны мэдээлэл</p>
+                                <span>Одоо ашиглагдаж буй данс : </span>
+                                <span className="white">5381137671</span>
+                              </div>
+                              <div className="custom-control">
+                                <input
+                                  className="btn btn-primary btn-sm"
+                                  type="submit"
+                                  id="banksubmit"
+                                  value="Өөрчлөх"
+                                />
+                              </div>
+                            </li>
                           </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="card settings-profile">
-                      <div className="card-body">
-                        <h5 className="card-title">Create API Key</h5>
-                        <div className="form-row">
-                          <div className="col-md-6">
-                            <label htmlFor="generateKey">
-                              Generate key name
-                            </label>
-                            <input
-                              id="generateKey"
-                              type="text"
-                              className="form-control"
-                              placeholder="Enter your key name"
-                            />
-                          </div>
-                          <div className="col-md-6">
-                            <label htmlFor="rewritePassword">
-                              Confirm password
-                            </label>
-                            <input
-                              id="rewritePassword"
-                              type="password"
-                              className="form-control"
-                              placeholder="Confirm your password"
-                            />
-                          </div>
-                          <div className="col-md-12">
-                            <input type="submit" value="Create API key" />
-                          </div>
                         </div>
                       </div>
                     </div>

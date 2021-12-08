@@ -168,13 +168,13 @@ export default class Header extends Component {
                     <div className="dropdown-body">
                       <ul className="profile-nav">
                         <li className="nav-item">
-                          <Link to="/profile" className="nav-link">
-                            <i className="icon ion-md-person"></i>
-                            <span>Хэрэглэгч</span>
+                          <Link className="nav-link">
+                            <i className="icon ion-md-archive"></i>
+                            <span>Мэдэгдэл</span>
                           </Link>
                         </li>
                         <li className="nav-item">
-                          <Link to="/wallet" className="nav-link">
+                          <Link to="/markets" className="nav-link">
                             <i className="icon ion-md-wallet"></i>
                             <span>Хэтэвч</span>
                           </Link>

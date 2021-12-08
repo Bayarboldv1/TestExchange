@@ -1,5 +1,5 @@
-import React from 'react';
-import { Tabs, Tab } from 'react-bootstrap';
+import React from "react";
+import { Tabs, Tab } from "react-bootstrap";
 export default function HistoryOrder() {
   return (
     <>
@@ -18,7 +18,7 @@ export default function HistoryOrder() {
             </ul>
             <span className="no-data">
               <i className="icon ion-md-document"></i>
-              No data
+              Захиалга Хоосон байна
             </span>
           </Tab>
           <Tab eventKey="closed-orders" title="Closed Orders">
@@ -32,9 +32,9 @@ export default function HistoryOrder() {
               <li>Executed</li>
               <li>Unexecuted</li>
             </ul>
-            <span className="no-data">
+            <span className="no-data ">
               <i className="icon ion-md-document"></i>
-              No data
+              Захиалга Хоосон байна
             </span>
           </Tab>
           <Tab eventKey="order-history" title="Order history">
@@ -50,7 +50,7 @@ export default function HistoryOrder() {
             </ul>
             <span className="no-data">
               <i className="icon ion-md-document"></i>
-              No data
+              Захиалга Хоосон байна
             </span>
           </Tab>
           <Tab eventKey="balance" title="Balance">
@@ -66,7 +66,7 @@ export default function HistoryOrder() {
             </ul>
             <span className="no-data">
               <i className="icon ion-md-document"></i>
-              No data
+              Захиалга Хоосон байна
             </span>
           </Tab>
         </Tabs>

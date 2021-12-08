@@ -10,6 +10,7 @@ export default function TradingChart() {
           theme={Themes.LIGHT}
           locale="fr"
           autosize
+          hide_side_toolbar={false}
         />
       </div>
     </>

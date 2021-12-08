@@ -13,6 +13,7 @@ function OutModal({ setOpenOutModal }) {
         </div>
         <div className="obody">
           <div className="form-group">
+            <p>Илгээх хаягаа нягтлана уу!</p>
             <input
               type="text"
               className="form-control"
@@ -28,7 +29,9 @@ function OutModal({ setOpenOutModal }) {
               required
             />
           </div>
-          <p>44</p>
+          <p>Шимтгэл</p>
+          <p>1400{}</p>
+          <h6>Таны шилжүүлэг хийх боломжит хэмжээ: ₮20,000,000</h6>
         </div>
 
         <div className="footer">

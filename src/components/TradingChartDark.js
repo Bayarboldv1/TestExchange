@@ -1,5 +1,5 @@
-import React from 'react';
-import TradingViewWidget, { Themes } from 'react-tradingview-widget';
+import React from "react";
+import TradingViewWidget, { Themes } from "react-tradingview-widget";
 
 export default function TradingChart() {
   return (
@@ -10,6 +10,7 @@ export default function TradingChart() {
           theme={Themes.DARK}
           locale="fr"
           autosize
+          hide_side_toolbar={false}
         />
       </div>
     </>

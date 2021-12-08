@@ -16,6 +16,7 @@ import NewsDetails from "./news-details";
 import Signup from "./signup";
 import Notfound from "./notfound";
 import Test from "./test";
+import Id from "./id";
 
 export default function index() {
   return (
@@ -66,6 +67,9 @@ export default function index() {
           </Route>
           <Route path="/test">
             <Test />
+          </Route>
+          <Route path="/id">
+            <Id />
           </Route>
         </Switch>
       </Layout>

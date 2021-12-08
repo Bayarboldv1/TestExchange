@@ -15,10 +15,10 @@ export default class exchange extends Component {
       <>
         <div className="container-fluid mtb15 no-fluid">
           <div className="row sm-gutters">
-            <div className="col-sm-12 col-md-3">
+            {/* <div className="col-sm-12 col-md-3">
               <MarketPairs />
-            </div>
-            <div className="col-sm-12 col-md-6">
+            </div> */}
+            <div className="col-sm-12 col-md-8">
               <ThemeConsumer>
                 {({ data }) => {
                   return data.theme === "dark" ? (
@@ -28,17 +28,20 @@ export default class exchange extends Component {
                   );
                 }}
               </ThemeConsumer>
-              <MarketTrade />
+              <div className="col-md-16">
+                <HistoryOrder />
+              </div>
             </div>
-            <div className="col-md-3">
-              <OrderBook />
-              <MarketHistory />
-            </div>
-            <div className="col-md-3">
-              <MarketNews />
-            </div>
-            <div className="col-md-9">
-              <HistoryOrder />
+            <div className="col-md">
+              <div className="row">
+                <div className="col">
+                  <OrderBook />
+                </div>
+                <div className="col">
+                  <MarketHistory />
+                </div>
+                <MarketTrade />
+              </div>
             </div>
           </div>
         </div>

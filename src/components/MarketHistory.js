@@ -1,18 +1,18 @@
-import React from 'react';
-import { Tabs, Tab } from 'react-bootstrap';
+import React from "react";
+import { Tabs, Tab } from "react-bootstrap";
 
 export default function MarketHistory() {
   return (
     <>
-      <div className="market-history">
+      <div className="market-history order-book mb-15">
         <Tabs defaultActiveKey="recent-trades">
-          <Tab eventKey="recent-trades" title="Recent Trades">
+          <Tab eventKey="recent-trades" title="Биелсэн Захиалга">
             <table className="table">
               <thead>
                 <tr>
-                  <th>Time</th>
-                  <th>Price(BTC)</th>
-                  <th>Amount(ETH)</th>
+                  <th>Огноо</th>
+                  <th>Хэмжээ(BTC)</th>
+                  <th>Нийт(ETH)</th>
                 </tr>
               </thead>
               <tbody>

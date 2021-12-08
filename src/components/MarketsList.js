@@ -51,7 +51,13 @@ export default function MarketsList() {
                           </button>
                         </td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setOutModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Зарлага
                           </button>
                         </td>
@@ -83,7 +89,13 @@ export default function MarketsList() {
                           )}
                         </td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setOutModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Зарлага
                           </button>
                         </td>
@@ -143,7 +155,13 @@ export default function MarketsList() {
                           </button>
                         </td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setOutModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Зарлага
                           </button>
                         </td>
@@ -169,7 +187,13 @@ export default function MarketsList() {
                           </button>
                         </td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setOutModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Зарлага
                           </button>
                         </td>
@@ -195,7 +219,13 @@ export default function MarketsList() {
                           </button>
                         </td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setOutModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Зарлага
                           </button>
                         </td>
@@ -221,7 +251,13 @@ export default function MarketsList() {
                           </button>
                         </td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setOutModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Зарлага
                           </button>
                         </td>
@@ -247,7 +283,13 @@ export default function MarketsList() {
                           </button>
                         </td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setOutModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Зарлага
                           </button>
                         </td>
@@ -273,7 +315,13 @@ export default function MarketsList() {
                           </button>
                         </td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setOutModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Зарлага
                           </button>
                         </td>
@@ -299,7 +347,13 @@ export default function MarketsList() {
                           </button>
                         </td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-link ">
+                          <button
+                            onClick={() => {
+                              setOutModalOpen(true);
+                            }}
+                            type="button"
+                            class="btn btn-sm btn-link "
+                          >
                             Зарлага
                           </button>
                         </td>

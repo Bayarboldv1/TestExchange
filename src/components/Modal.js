@@ -50,7 +50,13 @@ function Modal({ setOpenModal }) {
           >
             Болих
           </button>
-          <button>Хүлээн Авсан</button>
+          <button
+            onClick={() => {
+              setOpenModal(false);
+            }}
+          >
+            Хүлээн Авсан
+          </button>
         </div>
       </div>
     </div>

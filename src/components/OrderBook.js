@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 
 export default function OrderBook() {
   return (
     <>
-      <div className="order-book mb15">
-        <h2 className="heading">Order Book</h2>
+      <div className="order-book  mb15">
+        <h2 className="heading">Захиалга</h2>
         <table className="table">
           <thead>
             <tr>
-              <th>Price(BTC)</th>
-              <th>Amount(ETH)</th>
-              <th>Total(ETH)</th>
+              <th>Үнэ(BTC)</th>
+              <th>Хэмжээ(ETH)</th>
+              <th>Нийт(ETH)</th>
             </tr>
           </thead>
           <tbody>

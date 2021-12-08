@@ -49,17 +49,9 @@ export default function MarketTrade() {
                   <p>
                     Available: <span>0 BTC = 0 USD</span>
                   </p>
-                  <p>
-                    Volume: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Margin: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Fee: <span>0 BTC = 0 USD</span>
-                  </p>
+
                   <button type="submit" className="btn buy">
-                    Buy
+                    Авах
                   </button>
                 </form>
               </div>
@@ -104,16 +96,8 @@ export default function MarketTrade() {
                   <p>
                     Available: <span>0 BTC = 0 USD</span>
                   </p>
-                  <p>
-                    Volume: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Margin: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Fee: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <button className="btn sell">Sell</button>
+
+                  <button className="btn sell">Зарах</button>
                 </form>
               </div>
             </div>
@@ -161,15 +145,7 @@ export default function MarketTrade() {
                   <p>
                     Available: <span>0 BTC = 0 USD</span>
                   </p>
-                  <p>
-                    Volume: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Margin: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Fee: <span>0 BTC = 0 USD</span>
-                  </p>
+
                   <button type="submit" className="btn buy">
                     Buy
                   </button>
@@ -215,15 +191,6 @@ export default function MarketTrade() {
                   </ul>
                   <p>
                     Available: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Volume: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Margin: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Fee: <span>0 BTC = 0 USD</span>
                   </p>
                   <button className="btn sell">Sell</button>
                 </form>
@@ -273,15 +240,6 @@ export default function MarketTrade() {
                   <p>
                     Available: <span>0 BTC = 0 USD</span>
                   </p>
-                  <p>
-                    Volume: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Margin: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Fee: <span>0 BTC = 0 USD</span>
-                  </p>
                   <button type="submit" className="btn buy">
                     Buy
                   </button>
@@ -327,15 +285,6 @@ export default function MarketTrade() {
                   </ul>
                   <p>
                     Available: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Volume: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Margin: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Fee: <span>0 BTC = 0 USD</span>
                   </p>
                   <button className="btn sell">Sell</button>
                 </form>
@@ -385,15 +334,6 @@ export default function MarketTrade() {
                   <p>
                     Available: <span>0 BTC = 0 USD</span>
                   </p>
-                  <p>
-                    Volume: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Margin: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Fee: <span>0 BTC = 0 USD</span>
-                  </p>
                   <button type="submit" className="btn buy">
                     Buy
                   </button>
@@ -439,15 +379,6 @@ export default function MarketTrade() {
                   </ul>
                   <p>
                     Available: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Volume: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Margin: <span>0 BTC = 0 USD</span>
-                  </p>
-                  <p>
-                    Fee: <span>0 BTC = 0 USD</span>
                   </p>
                   <button className="btn sell">Sell</button>
                 </form>

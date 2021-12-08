@@ -3,6 +3,7 @@
   border-radius: 5px;
   border: none;
   margin-bottom: 15px;
+  justify-content: center;
 }
 
 .settings-nav {
@@ -233,4 +234,8 @@
 }
 .wallet-history {
   overflow-x: auto;
+}
+
+.settings {
+  margin-left: 20%;
 }
