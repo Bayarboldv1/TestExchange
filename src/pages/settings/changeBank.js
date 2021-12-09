@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import BankModal from "../../components/BankModal";
 
 function ChangeBank() {
+  const [BankModalOpen, setBankModalOpen] = useState(false);
   return (
     <>
       <div className="settings mtb15">
         <div className="container-fluid">
           <div className="card-bank">
+            {BankModalOpen && (
+              <BankModal const setBankModalOpen={setBankModalOpen} />
+            )}
             <div className="card-body">
               <h5 className="card-title">Банкны мэдээлэл</h5>
               <div className="settings-notification">
@@ -31,14 +36,13 @@ function ChangeBank() {
                           <td className="">KhanBank</td>
                           <td>
                             <div className="custom-bank-button ">
-                              <Link to="/id">
-                                <button
-                                  type="submit"
-                                  className="bi bi-upload btn btn-primary btn-sm"
-                                >
-                                  Өөрчлөх
-                                </button>
-                              </Link>
+                              <button
+                                onClick={() => setBankModalOpen(true)}
+                                type="submit"
+                                className="bi bi-upload btn btn-primary btn-sm"
+                              >
+                                Өөрчлөх
+                              </button>
                             </div>
                           </td>
                         </tr>
@@ -54,5 +58,4 @@ function ChangeBank() {
     </>
   );
 }
-
 export default ChangeBank;

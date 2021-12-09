@@ -18,24 +18,28 @@ export default function MarketsList() {
             <div className="col-md-12">
               <div className="markets-pair-list">
                 <div className=" header col-md mt-3 ml-5 ">
-                  {modelOpen && <Model const setOpenModel={setModelOpen} />}
-
                   {modalOpen && <Modal const setOpenModal={setModalOpen} />}
                   {outModalOpen && (
                     <OutModal const setOpenOutModal={setOutModalOpen} />
                   )}
-                  <h5>Нийт үлдэгдэл</h5>
-                  <h2>1000,000 MNT</h2>
+                  <div className="col">
+                    <h5>Нийт үлдэгдэл</h5>
+                    <h2>1000,000 MNT</h2>
+                  </div>
                 </div>
                 <div className="table-responsive d-flex justify-content-center">
                   <table className=" table star-active w-75 ml-5 ">
-                    <thead className="">
+                    <thead>
                       <tr>
                         <th>Валют</th>
                         <th>Нэр</th>
                         <th>Нийт</th>
                         <th>Битүүмжлэгдсэн</th>
                         <th>Гүйлгээ</th>
+                        <th className="hide">
+                          0 Үлдэгдэл нуух
+                          <i className=" icon ion-md-eye ml-2"></i>
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
