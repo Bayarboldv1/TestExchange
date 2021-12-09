@@ -37,3 +37,35 @@
   border: 1px solid #e0e3eb;
   border-radius: 2px;
 }
+
+.orders-book table,
+.orders-book tr,
+.orders-book td,
+.orders-book th {
+  width: 100%;
+  table-layout: fixed;
+}
+.orders-book tr {
+  float: left;
+  clear: both;
+  overflow: hidden;
+  // height: 10px;
+}
+.orders-book .table thead th {
+  font-weight: 400;
+  font-size: 12px;
+}
+.orders-book tbody tr {
+  height: 23px;
+  // margin-top: -2px;
+}
+
+.orders-book tbody td {
+  border: none;
+  height: 20px;
+  font-size: 10px;
+}
+.orders-book {
+  border: 1px solid #e0e3eb;
+  border-radius: 2px;
+}

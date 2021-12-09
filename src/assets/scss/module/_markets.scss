@@ -52,6 +52,10 @@
   width: 100%;
   margin-left: 25%;
 }
+.markets-pair-list .header h5,
+.markets-pair-list .header h2 {
+  margin-left: 11%;
+}
 .markets-pair-list th,
 .markets-pair-list td {
   padding: 15px !important;
@@ -61,7 +65,8 @@
 .markets-pair-list {
   align-self: center;
   justify-content: center;
-  margin-left: 20%;
+  // margin-left: 20%;
+  flex-basis: 100%;
 }
 
 .markets-pair-list h2 {

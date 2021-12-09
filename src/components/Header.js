@@ -16,17 +16,17 @@ export default class Header extends Component {
       <>
         <header className="light-bb">
           <Navbar expand="lg">
-            {/* <Link className="navbar-brand" to="/">
+            <Link className="navbar-brand" to="/">
               <ThemeConsumer>
                 {({ data }) => {
                   return data.theme === "light" ? (
-                    <img src={"img/logo-dark.svg"} alt="logo" />
-                  ) : (
                     <img src={"img/logo-light.svg"} alt="logo" />
+                  ) : (
+                    <img src={"img/logo-dark.svg"} alt="logo" />
                   );
                 }}
               </ThemeConsumer>
-            </Link> */}
+            </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="navbar-nav mr-auto">

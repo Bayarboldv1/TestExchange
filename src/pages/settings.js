@@ -1317,7 +1317,10 @@ export default function settings() {
                       </Row>
                     </div>
                   </Tab.Pane> */}
-                  <Tab.Pane eventKey="settings" className="col-md-11">
+                  <Tab.Pane
+                    eventKey="settings"
+                    className="d-flex justify-content-center"
+                  >
                     <div className="card">
                       <div className="card-body">
                         <h5 className="card-title">Тохиргоо</h5>
@@ -1429,19 +1432,21 @@ export default function settings() {
                                 <span className="white">5381137671</span>
                               </div>
                               <div className="custom-control">
-                                <input
-                                  className="btn btn-primary btn-sm"
-                                  type="submit"
-                                  id="banksubmit"
-                                  value="Өөрчлөх"
-                                />
+                                <Link to="/change-bank">
+                                  <button
+                                    type="submit"
+                                    className="btn btn-primary btn-sm"
+                                  >
+                                    Өөрчлөх
+                                  </button>
+                                </Link>
                               </div>
                             </li>
                           </ul>
                         </div>
                       </div>
                     </div>
-                    <div className="card">
+                    {/* <div className="card">
                       <div className="card-body">
                         <h5 className="card-title">Your API Keys</h5>
                         <div className="wallet-history">
@@ -1540,7 +1545,7 @@ export default function settings() {
                           </table>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </Tab.Pane>
                 </Tab.Content>
               </Col>

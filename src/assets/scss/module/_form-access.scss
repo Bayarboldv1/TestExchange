@@ -12,6 +12,7 @@
   color: #646fa3;
   font-size: 14px;
 }
+
 .form-access .form-group input:focus {
   box-shadow: none;
 }
@@ -53,4 +54,12 @@
 }
 .form-access h2 a {
   font-weight: 600;
+}
+
+.container-fluid .exchangeDiv .secondHeader .form-group1 {
+  margin-bottom: 5px;
+}
+
+.container-fluid .exchangeDiv .secondHeader {
+  color: grey;
 }

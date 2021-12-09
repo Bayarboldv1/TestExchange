@@ -1,24 +1,33 @@
+import { isTemplateElement } from "@babel/types";
 import React, { useState } from "react";
 import { Tabs, Tab, Alert } from "react-bootstrap";
 import Modal from "./Modal";
 import OutModal from "./OutModal";
+import Model from "./Model";
 
 export default function MarketsList() {
+  const [modelOpen, setModelOpen] = useState(false);
+
   const [modalOpen, setModalOpen] = useState(false);
   const [outModalOpen, setOutModalOpen] = useState(false);
-  const [value, setValue] = useState("");
   return (
     <>
       <div className="markets pb70">
         <div className="container-fluid">
-          <div className="row">
+          <div className="row ">
             <div className="col-md-12">
               <div className="markets-pair-list">
-                <div className="col-md mt-3 ml-5 justify-content-center  ">
+                <div className=" header col-md mt-3 ml-5 ">
+                  {modelOpen && <Model const setOpenModel={setModelOpen} />}
+
+                  {modalOpen && <Modal const setOpenModal={setModalOpen} />}
+                  {outModalOpen && (
+                    <OutModal const setOpenOutModal={setOutModalOpen} />
+                  )}
                   <h5>Нийт үлдэгдэл</h5>
                   <h2>1000,000 MNT</h2>
                 </div>
-                <div className="table-responsive ">
+                <div className="table-responsive d-flex justify-content-center">
                   <table className=" table star-active w-75 ml-5 ">
                     <thead className="">
                       <tr>
@@ -35,7 +44,12 @@ export default function MarketsList() {
                           <img src={"img/icon/1.png"} alt="eth" /> ETH
                         </td>
                         <td>
-                          <i className="icon ion-md-star"></i> ETH
+                          <i
+                            value="eth"
+                            id="eth"
+                            className="icon ion-md-star"
+                          ></i>
+                          ETH
                         </td>
                         <td>7394.06</td>
                         <td className="green">+0.78%</td>
@@ -81,13 +95,8 @@ export default function MarketsList() {
                           >
                             Орлого
                           </button>
-                          {modalOpen && (
-                            <Modal const setOpenModal={setModalOpen} />
-                          )}
-                          {outModalOpen && (
-                            <OutModal const setOpenOutModal={setOutModalOpen} />
-                          )}
                         </td>
+                        {/* sasasa */}
                         <td>
                           <button
                             onClick={() => {
@@ -338,7 +347,7 @@ export default function MarketsList() {
                         <td>
                           <button
                             onClick={() => {
-                              setModalOpen(true);
+                              setModelOpen(true);
                             }}
                             type="button"
                             class="btn btn-sm btn-link "

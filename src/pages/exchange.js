@@ -13,12 +13,46 @@ export default class exchange extends Component {
   render() {
     return (
       <>
-        <div className="container-fluid mtb15 no-fluid">
-          <div className="row sm-gutters">
+        <div className="container-fluid mtb20 no-fluid">
+          <div className="exchangeDiv row sm-gutters">
             {/* <div className="col-sm-12 col-md-3">
               <MarketPairs />
             </div> */}
             <div className="col-sm-12 col-md-8">
+              <div className="secondHeader row mt-1">
+                <div className="form-group1 col">
+                  {/* <select id="selectBank" className="custom-select">
+                    <option defaultValue value="BTC">
+                      BTC
+                    </option>
+                    <option value="LUNA">LUNA</option>
+                    <option value="SHIBA">SHIBA</option>
+                    <option value="ETH">ETH</option>
+                    <option value="UNI">UNI</option>
+                  </select> */}
+                </div>
+                <div className="col">
+                  <div className="green mt-2">
+                    <h5>32423432</h5>
+                  </div>
+                </div>
+                <div className="col">
+                  <span>Өөрчлөлт</span>
+                  <div className="green">+0.15%</div>
+                </div>
+                <div className="col">
+                  <span>24Ц Дээд</span>
+                  <div className="">32423432</div>
+                </div>
+                <div className="col">
+                  <span>24Ц Доод</span>
+                  <div className="">32423432</div>
+                </div>
+                <div className="col">
+                  <span>24Ц Хэмжээ</span>
+                  <div className="">32423432</div>
+                </div>
+              </div>
               <ThemeConsumer>
                 {({ data }) => {
                   return data.theme === "dark" ? (

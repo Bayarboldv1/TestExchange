@@ -17,6 +17,7 @@ import Signup from "./signup";
 import Notfound from "./notfound";
 import Test from "./test";
 import Id from "./settings/id";
+import ChangeBank from "./settings/changeBank";
 
 export default function index() {
   return (
@@ -70,6 +71,9 @@ export default function index() {
           </Route>
           <Route path="/id">
             <Id />
+          </Route>
+          <Route path="/change-bank">
+            <ChangeBank />
           </Route>
         </Switch>
       </Layout>

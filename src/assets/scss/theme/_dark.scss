@@ -39,10 +39,10 @@
 }
 .dark .market-history .table td,
 .dark .market-history .table th {
-  border-top: 1px solid #2a2e39;
+  // border-top: 1px solid #392a32;
 }
 .dark .order-book thead tr {
-  border-bottom: 1px solid #2a2e39;
+  border-bottom: 1px solid #2d392a;
 }
 .dark .order-book,
 .dark .market-history,
@@ -204,7 +204,7 @@
 }
 .dark .table td,
 .dark table th {
-  border-top: 1px solid #2a2e39;
+  // border-top: 1px solid #2a2e39;
 }
 .dark .markets-pair-list .nav {
   background: #1c2030;
@@ -364,6 +364,9 @@
 .dark .settings .card {
   background: #1e222d;
 }
+.dark .settings .card-bank {
+  background: #1e222d;
+}
 
 .dark .settings .card-title {
   color: #fff;
@@ -416,4 +419,13 @@
 .dark .news-details,
 .dark .page-content {
   color: #fff;
+}
+
+//image----------->
+
+.imageCard .preidImg .imaged {
+  max-width: 400px;
+  max-height: 300px;
+  justify-content: center;
+  align-self: center;
 }

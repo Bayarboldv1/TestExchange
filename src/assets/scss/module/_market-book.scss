@@ -9,21 +9,29 @@
   float: left;
   clear: both;
   overflow: hidden;
+  // height: 10px;
 }
 .order-book .table thead th {
   font-weight: 400;
   font-size: 12px;
 }
 .order-book thead tr {
-  border-bottom: 1px solid #e0e3eb;
+  border-bottom: 1px solid #aaa8a7;
 }
-.order-book tbody tr,
+.order-book tbody tr {
+  height: 23px;
+  // margin-top: -2px;
+}
+
 .order-book tbody td {
   border: none;
+  height: 20px;
+  font-size: 10px;
 }
 .order-book {
   border: 1px solid #e0e3eb;
   border-radius: 2px;
+  width: 110%;
 }
 .red-bg-80,
 .red-bg-60,
@@ -128,6 +136,7 @@
 .ob-heading td {
   padding: 5px 12px;
   cursor: default;
+  color: #8b92a7;
 }
 
 .ob-heading tr {
@@ -144,7 +153,12 @@
 .order-book tbody {
   display: block;
   overflow-y: auto;
-  height: 211px;
+  height: 235px;
+}
+.orders-book table {
+  display: block;
+  overflow-y: auto;
+  height: 554px;
 }
 
 tbody.ob-heading {

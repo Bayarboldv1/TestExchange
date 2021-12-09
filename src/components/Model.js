@@ -1,10 +1,10 @@
 import React from "react";
 import "../assets/scss/module/modal.scss";
 
-function Modal({ setOpenModal }) {
+function Model({ setOpenModel }) {
   return (
-    <div className="modalBackground  d-flex justify-content-center">
-      <div className="modalContainer">
+    <div className=" d-flex justify-content-center">
+      <div className="">
         <div className="title">
           <h1>Орлого </h1>
         </div>
@@ -16,8 +16,8 @@ function Modal({ setOpenModal }) {
             <button className="btn btn-sm btn-link">Хуулах</button>
           </div>
         </div>
-        <div className="lbody">
-          <div className="qrt  col-md-4">
+        <div className="">
+          <div className=" col-md-4">
             <p>QR Code</p>
             <img
               className="img-fluid w-100"
@@ -25,7 +25,7 @@ function Modal({ setOpenModal }) {
               alt="qr-code"
             />
           </div>
-          <div className="btext">
+          <div className="">
             <h5>Санамж</h5>
             <li>
               Энэхүү крипто данс руу {} -с өөр койн илгээж болохгүйг анхаарна
@@ -44,7 +44,7 @@ function Modal({ setOpenModal }) {
         <div className="footer">
           <button
             onClick={() => {
-              setOpenModal(false);
+              setOpenModel(false);
             }}
             id="cancelBtn"
           >
@@ -52,7 +52,7 @@ function Modal({ setOpenModal }) {
           </button>
           <button
             onClick={() => {
-              setOpenModal(false);
+              setOpenModel(false);
             }}
           >
             Хүлээн Авсан
@@ -63,4 +63,4 @@ function Modal({ setOpenModal }) {
   );
 }
 
-export default Modal;
+export default Model;

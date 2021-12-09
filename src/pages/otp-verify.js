@@ -37,7 +37,7 @@ function OtpVerify() {
               required
               onKeyPress={inputHandler}
             />
-            <Link to="/profile">
+            <Link to="/markets">
               <button type="submit" className="btn btn-primary">
                 Илгээх
               </button>

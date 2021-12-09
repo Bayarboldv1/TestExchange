@@ -4,8 +4,19 @@
   border: none;
   margin-bottom: 15px;
   justify-content: center;
+  margin-left: -80px;
 }
 
+.card-bank {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 14px -6px;
+  border-radius: 5px;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  max-width: 75%;
+  min-width: 75%;
+  // margin-left: -50px;
+}
 .settings-nav {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 14px -6px;
   border-radius: 5px;
@@ -54,10 +65,20 @@
   margin-top: 10px;
 }
 
-.settings-profile .custom-file {
-  display: inline-block;
-  width: 20%;
+.custom-file {
+  width: 250px;
+  height: 400px;
   margin-left: 20px;
+  margin-right: 20px;
+  background-color: rgb(44, 47, 58);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 14px -6px;
+}
+.custom-bank {
+  max-width: 97%;
+}
+.custom-bank h5 {
+  color: rgb(255, 255, 255);
 }
 
 .settings-profile .custom-file label {
