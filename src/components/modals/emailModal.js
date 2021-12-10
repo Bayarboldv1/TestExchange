@@ -22,13 +22,17 @@ export default function EmailModal(props) {
       </Modal.Header>
       <Modal.Body>
         <h5>Имэйл хаягаа оруулна уу</h5>
-        <div className="form-group">
+        <div className="input-group mb-3">
           <input
             type="email"
             className="form-control"
             placeholder="Email Хаяг"
             required
+            aria-describedby="button-addon2"
           />
+          <button className="btn btn-link" type="submit" id="button-addon2">
+            send
+          </button>
         </div>
         <h5>Имэйл хаягруу илгээсэн 6 оронт баталгаажуулах код</h5>
         <input

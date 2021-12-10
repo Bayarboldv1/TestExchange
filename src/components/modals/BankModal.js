@@ -29,7 +29,7 @@
 //               placeholder="Дүн"
 //               required
 //             />
-//           </div>
+//            </div>
 
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
@@ -57,14 +57,17 @@ export default function BankModal(props) {
           </select>
         </div>
         <h5>Дансны дугаар</h5>
-        <div className="form-group">
-          <input
-            type="number"
-            className="form-control"
-            placeholder="Дансны Дугаар"
-            required
-          />
-        </div>{" "}
+        <div className="bank">
+          <div className="form-group">
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Данс"
+              required
+            />
+          </div>
+        </div>
+        <h5>Дансны нэр</h5>
         <div className="form-group">
           <input
             type="text"

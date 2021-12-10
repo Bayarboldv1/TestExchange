@@ -138,8 +138,9 @@ export default function InModal(props) {
           <input
             type="text"
             disabled
+            readonly
             className="form-control ml-3 col-md-7"
-            placeholder="0x6B68c78E766d44B1E304c74941c3B2FA97ac29a5"
+            value="0x6B68c78E766d44B1E304c74941c3B2FA97ac29a5"
             required
           />
           <button className="col-md-2 btn btn-primary ml-2">Хуулах</button>

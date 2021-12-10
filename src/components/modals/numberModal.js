@@ -22,13 +22,16 @@ export default function NumberlModal(props) {
       </Modal.Header>
       <Modal.Body>
         <h5>Утасны дугаараа оруулна уу</h5>
-        <div className="form-group">
+        <div className="input-group mb-3">
           <input
             type="number"
             className="form-control"
             placeholder="Утасны дугаар"
             required
           />
+          <button className="btn btn-link" type="submit" id="button-addon2">
+            send
+          </button>
         </div>
         <h5>Имэйл хаягруу илгээсэн 6 оронт баталгаажуулах код</h5>
         <input
