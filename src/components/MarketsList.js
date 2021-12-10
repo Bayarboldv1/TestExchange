@@ -1,33 +1,29 @@
 import { isTemplateElement } from "@babel/types";
 import React, { useState } from "react";
 import { Tabs, Tab, Alert } from "react-bootstrap";
-import Modal from "./Modal";
-import OutModal from "./OutModal";
-import Model from "./Model";
+import InModal from "./modals/Modal";
+import OutModal from "./modals/OutModal";
 
 export default function MarketsList() {
-  const [modelOpen, setModelOpen] = useState(false);
-
+  const [modalShow, setModalShow] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [outModalOpen, setOutModalOpen] = useState(false);
   return (
     <>
       <div className="markets pb70">
+        <OutModal show={modalShow} onHide={() => setModalShow(false)} />
+        <InModal show={modalOpen} onHide={() => setModalOpen(false)} />
         <div className="container-fluid">
           <div className="row ">
             <div className="col-md-12">
               <div className="markets-pair-list">
                 <div className=" header col-md mt-3 ml-5 ">
-                  {modalOpen && <Modal const setOpenModal={setModalOpen} />}
-                  {outModalOpen && (
-                    <OutModal const setOpenOutModal={setOutModalOpen} />
-                  )}
                   <div className="col">
                     <h5>Нийт үлдэгдэл</h5>
                     <h2>1000,000 MNT</h2>
                   </div>
                 </div>
                 <div className="table-responsive d-flex justify-content-center">
+                  <div className="d-flex align-items-center"></div>
                   <table className=" table star-active w-75 ml-5 ">
                     <thead>
                       <tr>
@@ -71,7 +67,7 @@ export default function MarketsList() {
                         <td>
                           <button
                             onClick={() => {
-                              setOutModalOpen(true);
+                              setModalShow(true);
                             }}
                             type="button"
                             class="btn btn-sm btn-link "
@@ -104,7 +100,7 @@ export default function MarketsList() {
                         <td>
                           <button
                             onClick={() => {
-                              setOutModalOpen(true);
+                              setModalShow(true);
                             }}
                             type="button"
                             class="btn btn-sm btn-link "
@@ -137,7 +133,7 @@ export default function MarketsList() {
                         <td>
                           <button
                             onClick={() => {
-                              setOutModalOpen(true);
+                              setModalShow(true);
                             }}
                             type="button"
                             class="btn btn-sm btn-link "
@@ -170,7 +166,7 @@ export default function MarketsList() {
                         <td>
                           <button
                             onClick={() => {
-                              setOutModalOpen(true);
+                              setModalShow(true);
                             }}
                             type="button"
                             class="btn btn-sm btn-link "
@@ -202,7 +198,7 @@ export default function MarketsList() {
                         <td>
                           <button
                             onClick={() => {
-                              setOutModalOpen(true);
+                              setModalShow(true);
                             }}
                             type="button"
                             class="btn btn-sm btn-link "
@@ -234,7 +230,7 @@ export default function MarketsList() {
                         <td>
                           <button
                             onClick={() => {
-                              setOutModalOpen(true);
+                              setModalShow(true);
                             }}
                             type="button"
                             class="btn btn-sm btn-link "
@@ -266,7 +262,7 @@ export default function MarketsList() {
                         <td>
                           <button
                             onClick={() => {
-                              setOutModalOpen(true);
+                              setModalShow(true);
                             }}
                             type="button"
                             class="btn btn-sm btn-link "
@@ -298,7 +294,7 @@ export default function MarketsList() {
                         <td>
                           <button
                             onClick={() => {
-                              setOutModalOpen(true);
+                              setModalShow(true);
                             }}
                             type="button"
                             class="btn btn-sm btn-link "
@@ -330,7 +326,7 @@ export default function MarketsList() {
                         <td>
                           <button
                             onClick={() => {
-                              setOutModalOpen(true);
+                              setModalShow(true);
                             }}
                             type="button"
                             class="btn btn-sm btn-link "
@@ -351,7 +347,7 @@ export default function MarketsList() {
                         <td>
                           <button
                             onClick={() => {
-                              setModelOpen(true);
+                              setModalOpen(true);
                             }}
                             type="button"
                             class="btn btn-sm btn-link "
@@ -362,7 +358,7 @@ export default function MarketsList() {
                         <td>
                           <button
                             onClick={() => {
-                              setOutModalOpen(true);
+                              setModalShow(true);
                             }}
                             type="button"
                             class="btn btn-sm btn-link "

@@ -6,16 +6,27 @@
   justify-content: center;
   margin-left: -80px;
 }
+.changeBank {
+  margin-left: 25%;
+}
+.container .settings-title {
+  color: #ffffff;
+}
+.container .settings-list {
+  width: 1000px;
+}
 
-.card-bank {
+.card-body {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 14px -6px;
   border-radius: 5px;
   border: none;
-  align-items: center;
+  min-width: 100%;
+  min-height: 200px;
+  display: flex;
   justify-content: center;
-  max-width: 75%;
-  min-width: 75%;
-  // margin-left: -50px;
+}
+.container .card-title {
+  color: #f0f3fa;
 }
 .settings-nav {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 14px -6px;
