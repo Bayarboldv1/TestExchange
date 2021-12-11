@@ -64,7 +64,7 @@ export default function HistoryOrder() {
               <li>Executed</li>
               <li>Unexecuted</li>
             </ul>
-            <span className="no-data">
+            <span className="no-data ">
               <i className="icon ion-md-document"></i>
               Захиалга Хоосон байна
             </span>

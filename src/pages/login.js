@@ -1,34 +1,104 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { useHistory, Link, NavLink } from "react-router-dom";
+import { Form, Input, message } from "antd";
+import Service from "../service/index";
 
-export default function login() {
+export default function Login() {
+  let history = useHistory();
+  const [loading, setloading] = useState(false);
+  const [form] = Form.useForm();
+  // const { loginHandler, setUserData } = useContext(SiteContext);
+  const [isVerify, setisVerify] = useState({
+    laoding: false,
+    show: false,
+    email: "",
+  });
+
+  // const onLogin = async () => {
+  //   try {
+  //     const values = await form.validateFields();
+  //     setloading(true);
+  //     Service.login(values)
+  //       .then((res) => {
+  //         if (res.data?.token) {
+  //           setUserData(res.data);
+  //           loginHandler(true);
+  //           setSession(res.data.token, JSON.stringify(res.data));
+  //           if (!res.data.idVerification || !res.data.mobileVerification) {
+  //             return history.push("/");
+  //           }
+  //           return history.push("/");
+  //         }
+  //         setloading(false);
+  //         return message.error("Нэвтрэх үйлдэл хийж чадсангүй");
+  //       })
+  //       .catch((e) => {
+  //         setloading(false);
+  //         if (e.response?.status === 406) {
+  //           setisVerify({
+  //             ...isVerify,
+  //             show: true,
+  //             email: e.response.data.value,
+  //           });
+  //           return message.error(e.response.data.error);
+  //         }
+  //         if (e.response?.status === 400) {
+  //           return message.error(e.response.data.error);
+  //         } else {
+  //           return message.error("Нэвтрэх үйлдэл хийж чадсангүй");
+  //         }
+  //       });
+  //   } catch (e) {
+  //     return;
+  //   }
+  // };
+
   return (
     <>
       <div className="vh-100 d-flex justify-content-center">
         <div className="form-access my-auto">
-          <form>
+          <Form name="userForm" from={form}>
             <span>Нэвтрэх</span>
-            <div className="form-group">
-              <input
-                type="email"
+            <Form.Item
+              name="username"
+              className="mb-2"
+              rules={[
+                {
+                  type: "email",
+                  required: true,
+                  message: "Email буруу байна !",
+                },
+              ]}
+            >
+              <Input
                 className="form-control"
                 placeholder="Email Хаяг"
                 required
               />
-            </div>
-            <div className="form-group">
-              <input
+            </Form.Item>
+            <Form.Item
+              name="password"
+              className="form-group"
+              rules={[
+                {
+                  required: true,
+                  message: "Заавал бөглөнө үү !",
+                },
+              ]}
+            >
+              <Input
+                autoComplete="new-password"
                 type="password"
                 className="form-control"
                 placeholder="Нууц Үг"
                 required
               />
-            </div>
+            </Form.Item>
             <div className="text-right">
-              <Link to="/reset">Нууц үгээ мартсан?</Link>
+              <NavLink to="/reset">Нууц үгээ мартсан?</NavLink>
             </div>
-            <div className="custom-control custom-checkbox">
-              <input
+            <Form.Item className="custom-control custom-checkbox">
+              <Input
                 type="checkbox"
                 className="custom-control-input"
                 id="form-checkbox"
@@ -36,15 +106,19 @@ export default function login() {
               <label className="custom-control-label" htmlFor="form-checkbox">
                 Намайг сана
               </label>
-            </div>
-            <Link to="/markets">
-              <button type="submit" className="btn btn-primary">
-                Нэвтрэх
+            </Form.Item>
+            <Form.Item>
+              <button
+                type="submit"
+                className="btn btn-primary"
+                // onClick={() => (loading ? "" : onLogin())}
+              >
+                {loading ? "Илгээж байна..." : "Нэвтрэх"}
               </button>
-            </Link>
-          </form>
+            </Form.Item>
+          </Form>
           <h2>
-            Шинэ хэрэглэгч? <Link to="/signup">Бүртгүүлэх</Link>
+            Шинэ хэрэглэгч? <NavLink to="/signup">Бүртгүүлэх</NavLink>
           </h2>
         </div>
       </div>
