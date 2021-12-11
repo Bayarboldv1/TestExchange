@@ -13,7 +13,7 @@ import OtpNumber from "./otp-number";
 import Lock from "./lock";
 import TermsAndConditions from "./terms-and-conditions";
 import NewsDetails from "./news-details";
-import Signup from "./signup";
+import Signup from "./signup/signup";
 import Notfound from "./notfound";
 import Test from "./test";
 import Id from "./settings/id";
