@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { useHistory, Link, NavLink } from "react-router-dom";
-import { Form, Input, message } from "antd";
+import { Form, Input, message, Button, Alert } from "antd";
+import { setSession } from "../components/helper/utils";
+import { SiteContext } from "../context/SiteContext/SiteContext";
 import Service from "../service/index";
 
 export default function Login() {
@@ -14,50 +16,50 @@ export default function Login() {
     email: "",
   });
 
-  // const onLogin = async () => {
-  //   try {
-  //     const values = await form.validateFields();
-  //     setloading(true);
-  //     Service.login(values)
-  //       .then((res) => {
-  //         if (res.data?.token) {
-  //           setUserData(res.data);
-  //           loginHandler(true);
-  //           setSession(res.data.token, JSON.stringify(res.data));
-  //           if (!res.data.idVerification || !res.data.mobileVerification) {
-  //             return history.push("/");
-  //           }
-  //           return history.push("/");
-  //         }
-  //         setloading(false);
-  //         return message.error("Нэвтрэх үйлдэл хийж чадсангүй");
-  //       })
-  //       .catch((e) => {
-  //         setloading(false);
-  //         if (e.response?.status === 406) {
-  //           setisVerify({
-  //             ...isVerify,
-  //             show: true,
-  //             email: e.response.data.value,
-  //           });
-  //           return message.error(e.response.data.error);
-  //         }
-  //         if (e.response?.status === 400) {
-  //           return message.error(e.response.data.error);
-  //         } else {
-  //           return message.error("Нэвтрэх үйлдэл хийж чадсангүй");
-  //         }
-  //       });
-  //   } catch (e) {
-  //     return;
-  //   }
-  // };
+  const onLogin = async () => {
+    try {
+      const values = await form.validateFields();
+      setloading(true);
+      Service.login(values)
+        .then((res) => {
+          if (res.data?.token) {
+            // setUserData(res.data);
+            // loginHandler(true);
+            setSession(res.data.token, JSON.stringify(res.data));
+            if (!res.data.idVerification || !res.data.mobileVerification) {
+              return history.push("/");
+            }
+            return history.push("/");
+          }
+          setloading(false);
+          return message.error("Нэвтрэх үйлдэл хийж чадсангүй");
+        })
+        .catch((e) => {
+          setloading(false);
+          if (e.response?.status === 406) {
+            setisVerify({
+              ...isVerify,
+              show: true,
+              email: e.response.data.value,
+            });
+            return message.error(e.response.data.error);
+          }
+          if (e.response?.status === 400) {
+            return message.error(e.response.data.error);
+          } else {
+            return message.error("Нэвтрэх үйлдэл хийж чадсангүй");
+          }
+        });
+    } catch (e) {
+      return;
+    }
+  };
 
   return (
     <>
       <div className="vh-100 d-flex justify-content-center">
         <div className="form-access my-auto">
-          <Form name="userForm" from={form}>
+          <Form name="userForm" form={form}>
             <span>Нэвтрэх</span>
             <Form.Item
               name="username"
@@ -74,6 +76,7 @@ export default function Login() {
                 className="form-control"
                 placeholder="Email Хаяг"
                 required
+                autoComplete="new-password"
               />
             </Form.Item>
             <Form.Item
@@ -97,21 +100,12 @@ export default function Login() {
             <div className="text-right">
               <NavLink to="/reset">Нууц үгээ мартсан?</NavLink>
             </div>
-            <Form.Item className="custom-control custom-checkbox">
-              <Input
-                type="checkbox"
-                className="custom-control-input"
-                id="form-checkbox"
-              />
-              <label className="custom-control-label" htmlFor="form-checkbox">
-                Намайг сана
-              </label>
-            </Form.Item>
             <Form.Item>
               <button
                 type="submit"
                 className="btn btn-primary"
-                // onClick={() => (loading ? "" : onLogin())}
+                onClick={() => (loading ? "" : onLogin())}
+                disabled={loading}
               >
                 {loading ? "Илгээж байна..." : "Нэвтрэх"}
               </button>

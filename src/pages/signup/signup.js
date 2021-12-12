@@ -1,12 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Form, Select, Input, message } from "antd";
 import { checkRegNumber, passwordReg } from "../signup/Share/utils";
 import { useHistory } from "react-router";
 import Service from "../../service/index";
+import banks from "../../service/bank/index";
 import LoggedIn from "../../components/guard/LoggedIn";
+import axios from "axios";
+import Banks from "./Banks";
+import { optionalCallExpression } from "@babel/types";
+const { Option } = Select;
 
-function Signup() {
+function Signup(item) {
+  const [khanName, setKhanName] = useState("");
+  const [golomtName, setGolomtName] = useState("");
+  const [tdbName, setTdbName] = useState("");
+  const [xacName, setXacName] = useState("");
+  const [bogdName, setBogdName] = useState("");
+  const [turName, setTurBank] = useState("");
+  axios
+    .get("http://192.168.1.103:8080/api/gam/v1/util/bank")
+    .then(function (banks) {
+      setKhanName(banks.data[0].name);
+      setGolomtName(banks.data[1].name);
+      setTdbName(banks.data[2].name);
+      setXacName(banks.data[3].name);
+      setTurBank(banks.data[4].name);
+      setBogdName(banks.data[5].name);
+      console.log(banks.data);
+    });
+
   let history = useHistory();
   const [form] = Form.useForm();
   const [loading, setloading] = useState(false);
@@ -15,7 +38,6 @@ function Signup() {
     try {
       const values = await form.validateFields();
       let passReg = passwordReg(values.password);
-
       let correctReg = checkRegNumber(values.registerNumber);
       if (!correctReg) {
         return message.warning("Регистрийн дугаарын формат буруу байна !");
@@ -25,13 +47,16 @@ function Signup() {
           "Нууц үг хамгийн багадаа 6 оронтой 1 том үсэг, 1 жижиг үсэг, тоо, 1 тусгай тэмдэгт байна !"
         );
       }
-      console.log("dsad1");
+      values["bankAccount"] = values.bankAccount.trim();
+      values["bankId"] = values.bankId.trim();
       values["email"] = values.email.trim().toLowerCase();
-      values["registerNumber"] = values.registerNumber.trim();
+      values["firstname"] = values.firstName.trim();
+      values["lasttname"] = values.lastName.trim();
+      values["password"] = values.password.trim();
+      values["phone"] = values.number.trim();
       values["registerNumber"] = values.registerNumber.trim();
       setloading(true);
-      console.log("dsad2");
-
+      console.log("data:", values);
       Service.signup(values)
         .then((res) => {
           if (res.data.status === 0) {
@@ -66,40 +91,49 @@ function Signup() {
           <div className="settings-profile">
             <Form form={form}>
               <span>Бүртгүүлэх</span>
-              <div name="lastName" className="form-group">
+              <Form.Item name="lastName" className="form-group">
                 <Input
                   type="text"
                   className="form-control"
                   placeholder="Овог"
                   required
                 />
-              </div>
-              <div name="firstName" className="form-group">
+              </Form.Item>
+              <Form.Item name="firstName" className="form-group">
                 <Input
                   type="text"
                   className="form-control"
                   placeholder="Нэр"
                   required
                 />
-              </div>
+              </Form.Item>
+              {/* <Banks /> */}
               <Form.Item name="registerNumber" className="form-group">
                 <Input
-                  type="text"
                   className="form-control"
                   placeholder="Регистэр"
                   required
                 />
               </Form.Item>
-              <Form.Item name="bank" className="form-group">
-                <select id="selectBank" className="custom-select">
-                  <option defaultValue>Банкаа Сонгоно уу</option>
-                  <option value="Khan">Хаан Банк</option>
-                  <option value="Xac">Хас Банк</option>
-                  <option value="TDB">Худалдаа Хөгжилийн Банк</option>
-                  <option value="Golomt">Голомт Банк</option>
+              <Form.Item name="bankId" className="form-group">
+                <select
+                  id="selectBank"
+                  className="custom-select"
+                  placeholder="Банкаа Сонгоно уу"
+                  allowClear
+                >
+                  {/* {banks.map((data) => (
+                    <option value={data.id}>{data.name}</option>
+                  ))} */}
+                  <option value="Khan">{khanName}</option>
+                  <option value="Xac">{xacName}</option>
+                  <option value="TDB">{tdbName}</option>
+                  <option value="Golomt">{golomtName}</option>
+                  <option value="Golomt">{turName}</option>
+                  <option value="Bogd">{bogdName}</option>
                 </select>
               </Form.Item>
-              <Form.Item name="dans" className="form-group">
+              <Form.Item name="bankAccount" className="form-group">
                 <Input
                   type="number"
                   className="form-control"
@@ -107,9 +141,18 @@ function Signup() {
                   required
                 />
               </Form.Item>
-              <Form.Item name="email" className="form-group">
+              <Form.Item
+                name="email"
+                className="form-group"
+                rules={[
+                  {
+                    type: "email",
+                    required: true,
+                    message: "Заавал бөглөнө үү !",
+                  },
+                ]}
+              >
                 <Input
-                  type="email"
                   className="form-control"
                   placeholder="Email Хаяг"
                   required
@@ -138,7 +181,8 @@ function Signup() {
                 ]}
               >
                 <Input
-                  type="text"
+                  autoComplete="new-password"
+                  type="password"
                   className="form-control"
                   placeholder="Нууц үг"
                   required
@@ -161,7 +205,7 @@ function Signup() {
                   type="submit"
                   className="btn btn-primary"
                   onClick={() => (loading ? "" : onCheck())}
-                  disabled={loading}
+                  // disabled={loading}
                 >
                   {loading ? "Илгээж байна..." : "Илгээх"}
                 </button>

@@ -6,6 +6,7 @@ import BankModal from "../../components/modals/BankModal";
 
 function ChangeBank() {
   const [modalShow, setModalShow] = useState(false);
+
   return (
     <>
       <BankModal show={modalShow} onHide={() => setModalShow(false)} />
