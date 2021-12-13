@@ -1,12 +1,12 @@
 import axios from "axios";
-let base_url = "http://192.168.1.103:8080/api/gam/v1/auth/";
+let base_url = "http://192.168.1.103:8080/api/gam/v1/exchange/";
 let url = base_url;
 
 class Services {
-  login = (data) => {
+  cancelExchange = (data) => {
     return new Promise(function (resolve, reject) {
       axios
-        .get(`${url}signin`, data)
+        .get(`${url}cancel`, data)
         .then((response) => {
           resolve(response);
         })
@@ -16,10 +16,10 @@ class Services {
     });
   };
 
-  signup = (data) => {
+  createExchange = (data) => {
     return new Promise(function (resolve, reject) {
       axios
-        .post(`${url}signup`, data)
+        .post(`${url}create`, data)
         .then((response) => {
           resolve(response);
         })
@@ -29,10 +29,23 @@ class Services {
     });
   };
 
-  verify = (data) => {
+  getActiveExchange = (data) => {
     return new Promise(function (resolve, reject) {
       axios
-        .post(`${url}check`, data)
+        .get(`${url}list/active`, data)
+        .then((response) => {
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  };
+
+  getAllExchange = (data) => {
+    return new Promise(function (resolve, reject) {
+      axios
+        .get(`${url}list/all`, data)
         .then((response) => {
           resolve(response);
         })

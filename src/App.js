@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 import Index from "./pages";
+import "antd/dist/antd.css";
 export default class App extends Component {
   state = {
     theme: "dark",

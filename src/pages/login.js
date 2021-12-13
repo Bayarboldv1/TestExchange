@@ -3,7 +3,7 @@ import { useHistory, Link, NavLink } from "react-router-dom";
 import { Form, Input, message, Button, Alert } from "antd";
 import { setSession } from "../components/helper/utils";
 import { SiteContext } from "../context/SiteContext/SiteContext";
-import Service from "../service/index";
+import Service from "../service/auth/index";
 
 export default function Login() {
   let history = useHistory();
@@ -59,11 +59,11 @@ export default function Login() {
     <>
       <div className="vh-100 d-flex justify-content-center">
         <div className="form-access my-auto">
-          <Form name="userForm" form={form}>
-            <span>Нэвтрэх</span>
+          <span>Нэвтрэх</span>
+          <Form form={form}>
             <Form.Item
               name="username"
-              className="mb-2"
+              className="form-group"
               rules={[
                 {
                   type: "email",

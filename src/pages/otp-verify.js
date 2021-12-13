@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import Service from "../service/index";
+import Service from "../service/auth/index";
 import { Form, Item, Input, message } from "antd";
 
-function OtpVerify() {
+function OtpVerify({ route }) {
+  var email = { email };
+  var phone = { phone };
   let history = useHistory();
   const [loading, setloading] = useState(false);
   const [form] = Form.useForm();
@@ -14,14 +16,17 @@ function OtpVerify() {
       return;
     }
   };
-  const verify = async () => {
+  const onSend = async () => {
     try {
       const values = await form.validateFields();
 
       values["emailOTP"] = values.emailOTP.trim();
       values["phoneOTP"] = values.phoneOTP.trim();
-      console.log("data:", values);
+      values["email"] = email.trim();
+      values["phone"] = phone.trim();
+      console.log("sss");
       setloading(true);
+      console.log("data:", values);
       Service.verify(values)
         .then((res) => {
           if (res.data.status) {
@@ -42,18 +47,24 @@ function OtpVerify() {
           }
         });
     } catch (e) {
-      return;
+      return message.error("Баталгаажуулах хийж чадсангүй");
     }
   };
   return (
     <>
       <div className="vh-100 d-flex justify-content-center">
         <div className="form-access my-auto">
+          <span className="mb-2">OTP Баталгаажуулалт</span>
           <Form form={form}>
-            <span className="mb-2">OTP Баталгаажуулалт</span>
+            <p>E-mail-руу тань явуулсан Баталгаажуулах Кодоо Оруулна уу</p>
             <Form.Item
-              label="E-mail-руу тань явуулсан Баталгаажуулах Кодоо Оруулна уу"
               name="emailOTP"
+              rules={[
+                {
+                  min: 6,
+                  message: "Баталгаажуулах код 6 оронтой байх ёстой",
+                },
+              ]}
             >
               <Input
                 maxlength="6"
@@ -64,9 +75,15 @@ function OtpVerify() {
                 required
               />
             </Form.Item>
+            <p>Утасруу тань явуулсан Баталгаажуулах Кодоо Оруулна уу</p>
             <Form.Item
-              label="Утасруу тань явуулсан Баталгаажуулах Кодоо Оруулна уу"
               name="phoneOTP"
+              rules={[
+                {
+                  min: 6,
+                  message: "Баталгаажуулах код 6 оронтой байх ёстой",
+                },
+              ]}
             >
               <Input
                 maxlength="6"
@@ -80,7 +97,7 @@ function OtpVerify() {
             <button
               type="submit"
               className="btn btn-primary"
-              onClick={() => verify()}
+              onClick={() => onSend()}
             >
               Баталгаажуулах
             </button>

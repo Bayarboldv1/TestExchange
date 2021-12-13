@@ -3,32 +3,34 @@ import { Link } from "react-router-dom";
 import { Form, Select, Input, message } from "antd";
 import { checkRegNumber, passwordReg } from "../signup/Share/utils";
 import { useHistory } from "react-router";
-import Service from "../../service/index";
-import banks from "../../service/bank/index";
+import Service from "../../service/auth/index";
+// import Banks from "../../service/bank/index";
 import LoggedIn from "../../components/guard/LoggedIn";
 import axios from "axios";
-import Banks from "./Banks";
-import { optionalCallExpression } from "@babel/types";
+// import Banks from "./Banks";
+import OtpVerify from "../otp-verify";
 const { Option } = Select;
-
 function Signup(item) {
-  const [khanName, setKhanName] = useState("");
+  useEffect(() => {
+    onCheck();
+    axios
+      .get("http://192.168.1.103:8080/api/gam/v1/util/bank")
+      .then(function (banks) {
+        setKhanName(banks.data[0].name);
+        setGolomtName(banks.data[1].name);
+        setTdbName(banks.data[2].name);
+        setXacName(banks.data[3].name);
+        setTurBank(banks.data[4].name);
+        setBogdName(banks.data[5].name);
+      });
+  }, []);
+
+  const [khanName, setKhanName] = useState([]);
   const [golomtName, setGolomtName] = useState("");
   const [tdbName, setTdbName] = useState("");
   const [xacName, setXacName] = useState("");
   const [bogdName, setBogdName] = useState("");
   const [turName, setTurBank] = useState("");
-  axios
-    .get("http://192.168.1.103:8080/api/gam/v1/util/bank")
-    .then(function (banks) {
-      setKhanName(banks.data[0].name);
-      setGolomtName(banks.data[1].name);
-      setTdbName(banks.data[2].name);
-      setXacName(banks.data[3].name);
-      setTurBank(banks.data[4].name);
-      setBogdName(banks.data[5].name);
-      console.log(banks.data);
-    });
 
   let history = useHistory();
   const [form] = Form.useForm();
@@ -50,28 +52,31 @@ function Signup(item) {
       values["bankAccount"] = values.bankAccount.trim();
       values["bankId"] = values.bankId.trim();
       values["email"] = values.email.trim().toLowerCase();
-      values["firstname"] = values.firstName.trim();
-      values["lasttname"] = values.lastName.trim();
       values["password"] = values.password.trim();
-      values["phone"] = values.number.trim();
+      values["phone"] = values.phone.trim();
+      values["firstname"] = values.firstName.trim();
+      values["lastname"] = values.lastName.trim();
       values["registerNumber"] = values.registerNumber.trim();
       setloading(true);
       console.log("data:", values);
       Service.signup(values)
         .then((res) => {
           if (res.data.status === 0) {
+            console.log(res);
             message.success(
               "Та имэйлээ шалгаад хэрэглэгчийн эрхээ баталгаажуулна уу!",
               4
             );
             form.resetFields();
-            history.push("/otp-verify");
+            history.push("/otp-verify", {
+              email: values.email,
+              phone: values.phone,
+            });
           } else {
             message.warning(
               "Таны хүсэлтийг биелүүлж чадсангүй. Дахин оролдоно уу ?"
             );
           }
-          console.log("res");
           setloading(false);
         })
         .catch((e) => {
@@ -89,8 +94,8 @@ function Signup(item) {
       <div className="vh-100 d-flex justify-content-center">
         <div className="form-access my-auto">
           <div className="settings-profile">
+            <span>Бүртгүүлэх</span>
             <Form form={form}>
-              <span>Бүртгүүлэх</span>
               <Form.Item name="lastName" className="form-group">
                 <Input
                   type="text"
@@ -107,7 +112,6 @@ function Signup(item) {
                   required
                 />
               </Form.Item>
-              {/* <Banks /> */}
               <Form.Item name="registerNumber" className="form-group">
                 <Input
                   className="form-control"
@@ -122,15 +126,18 @@ function Signup(item) {
                   placeholder="Банкаа Сонгоно уу"
                   allowClear
                 >
-                  {/* {banks.map((data) => (
-                    <option value={data.id}>{data.name}</option>
+                  {/* {bankLists.map((item, index) => (
+                    <option key={index}>
+                      <li>{item.name}</li>
+                    </option>
                   ))} */}
-                  <option value="Khan">{khanName}</option>
-                  <option value="Xac">{xacName}</option>
-                  <option value="TDB">{tdbName}</option>
-                  <option value="Golomt">{golomtName}</option>
-                  <option value="Golomt">{turName}</option>
-                  <option value="Bogd">{bogdName}</option>
+                  <option defaultValue>Банкаа Сонгоно уу</option>
+                  <option value="1">{khanName}</option>
+                  <option value="2">{xacName}</option>
+                  <option value="3">{tdbName}</option>
+                  <option value="4">{golomtName}</option>
+                  <option value="5">{turName}</option>
+                  <option value="6">{bogdName}</option>
                 </select>
               </Form.Item>
               <Form.Item name="bankAccount" className="form-group">
@@ -147,7 +154,6 @@ function Signup(item) {
                 rules={[
                   {
                     type: "email",
-                    required: true,
                     message: "Заавал бөглөнө үү !",
                   },
                 ]}
@@ -158,7 +164,7 @@ function Signup(item) {
                   required
                 />
               </Form.Item>
-              <Form.Item name="number" className="form-group">
+              <Form.Item name="phone" className="form-group">
                 <Input
                   type="number"
                   className="form-control"
@@ -174,10 +180,6 @@ function Signup(item) {
                     min: 6,
                     message: "Нууц үгийн урт 6 тэмдэгдээс багагүй байх ёстой",
                   },
-                  {
-                    required: true,
-                    message: "Заавал бөглөнө үү !",
-                  },
                 ]}
               >
                 <Input
@@ -187,18 +189,6 @@ function Signup(item) {
                   placeholder="Нууц үг"
                   required
                 />
-              </Form.Item>
-              <Form.Item className="custom-control custom-checkbox">
-                <Input
-                  type="checkbox"
-                  className="custom-control-input"
-                  id="form-checkbox"
-                  required
-                />
-                <label className="custom-control-label" htmlFor="form-checkbox">
-                  Үйлчилгээний нөхцөл зөвшөөрөх
-                  <Link to="/terms-and-conditions">Нөхцөл</Link>
-                </label>
               </Form.Item>
               <Form.Item>
                 <button
