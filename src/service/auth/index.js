@@ -93,7 +93,7 @@ class Services {
     });
   };
 
-  changePassword = (data) => {
+  mailOTP = (data) => {
     return new Promise(function (resolve, reject) {
       axios
         .get(`${url}signup/mail/otp/resend`, data)
@@ -106,7 +106,7 @@ class Services {
     });
   };
 
-  changePassword = (data) => {
+  smsOTP = (data) => {
     return new Promise(function (resolve, reject) {
       axios
         .get(`${url}signup/sms/otp/resend`, data)

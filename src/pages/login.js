@@ -4,11 +4,14 @@ import { Form, Input, message, Button, Alert } from "antd";
 import { setSession } from "../components/helper/utils";
 import { SiteContext } from "../context/SiteContext/SiteContext";
 import Service from "../service/auth/index";
+import LoggedIn from "../components/guard/LoggedIn";
+import OtpModal from "../components/modals/OtpModal";
 
-export default function Login() {
+function Login() {
   let history = useHistory();
   const [loading, setloading] = useState(false);
   const [form] = Form.useForm();
+  const [modalShow, setModalShow] = useState(false);
   // const { loginHandler, setUserData } = useContext(SiteContext);
   const [isVerify, setisVerify] = useState({
     laoding: false,
@@ -20,6 +23,7 @@ export default function Login() {
     try {
       const values = await form.validateFields();
       setloading(true);
+      console.log("data", values);
       Service.login(values)
         .then((res) => {
           if (res.data?.token) {
@@ -27,7 +31,8 @@ export default function Login() {
             // loginHandler(true);
             setSession(res.data.token, JSON.stringify(res.data));
             if (!res.data.idVerification || !res.data.mobileVerification) {
-              return history.push("/");
+              // return history.push("/");
+              return setModalShow(true);
             }
             return history.push("/");
           }
@@ -47,7 +52,7 @@ export default function Login() {
           if (e.response?.status === 400) {
             return message.error(e.response.data.error);
           } else {
-            return message.error("Нэвтрэх үйлдэл хийж чадсангүй");
+            return message.error("Нэвтрэх үйлдэл хийж чадсангүй1");
           }
         });
     } catch (e) {
@@ -57,6 +62,7 @@ export default function Login() {
 
   return (
     <>
+      <OtpModal show={modalShow} onHide={() => setModalShow(false)} />
       <div className="vh-100 d-flex justify-content-center">
         <div className="form-access my-auto">
           <span>Нэвтрэх</span>
@@ -119,3 +125,5 @@ export default function Login() {
     </>
   );
 }
+
+export default LoggedIn(Login);

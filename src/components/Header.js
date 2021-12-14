@@ -20,9 +20,9 @@ export default class Header extends Component {
               <ThemeConsumer>
                 {({ data }) => {
                   return data.theme === "light" ? (
-                    <img src={"img/logo-light.svg"} alt="logo" />
+                    <img src={"logo/logo1.png"} alt="logo" />
                   ) : (
-                    <img src={"img/logo-dark.svg"} alt="logo" />
+                    <img src={"logo/logo1.png"} alt="logo" />
                   );
                 }}
               </ThemeConsumer>
@@ -33,7 +33,7 @@ export default class Header extends Component {
                 <Link to="/" className="nav-link">
                   Арилжаа
                 </Link>
-                <Link to="/markets" className="nav-link">
+                <Link to="/wallet" className="nav-link">
                   Хэтэвч
                 </Link>
                 {/* <Link to="/markets" className="nav-link">

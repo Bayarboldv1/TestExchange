@@ -63,10 +63,12 @@
   font-size: 14px;
 }
 .markets-pair-list {
-  align-self: center;
-  justify-content: center;
-  // margin-left: 20%;
+  // justify-content: center;
   flex-basis: 100%;
+}
+.markets-pair-list .lists {
+  display: flex;
+  justify-content: center;
 }
 .markets-pair-list table thead .hide {
   color: #007bff;

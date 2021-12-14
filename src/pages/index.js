@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
+import { SiteContext } from "../context/SiteContext/SiteContext";
+import { removeSession } from "../components/helper/utils";
 import Layout from "../components/Layout";
 import { Switch, Route } from "react-router-dom";
 import Exchange from "../pages/exchange";
 import Markets from "../pages/markets";
 import Profile from "./profile";
-import Wallet from "./wallet";
+// import Wallet from "./wallet";
 import Settings from "./settings";
 import Login from "./login";
 import Reset from "./reset";
@@ -18,8 +20,31 @@ import Notfound from "./notfound";
 import Test from "./test";
 import Id from "./settings/id";
 import ChangeBank from "./settings/changeBank";
+import Wallet from "./wallet/index";
 
-export default function index() {
+export default function Index() {
+  const [loading, setloading] = useState(true);
+  // const { loginHandler, setUserData } = useContext(SiteContext);
+
+  useEffect(() => {
+    checkUserExists();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const checkUserExists = () => {
+    let token = sessionStorage.getItem("at");
+    let data = sessionStorage.getItem("us");
+    if (token && data) {
+      // setUserData(JSON.parse(data));
+      // loginHandler(true);
+    } else {
+      removeSession();
+      // loginHandler(false);
+    }
+    setloading(false);
+  };
+  if (loading) {
+    return "";
+  }
   return (
     <>
       <Layout>
