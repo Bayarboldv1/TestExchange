@@ -3,29 +3,17 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 import Index from "./pages";
 import "antd/dist/antd.css";
+import { UserConsumer, UserContext, UserProvider } from "./context/UserContext";
 export default class App extends Component {
-  state = {
-    theme: "dark",
-  };
   render() {
     return (
       <>
         <BrowserRouter>
           <Route component={ScrollToTop} />
-          <ThemeProvider
-            value={{
-              data: this.state,
-              update: () => {
-                this.setState((state) => ({
-                  theme:
-                    state.theme === "light"
-                      ? (this.theme = "dark")
-                      : (this.theme = "light"),
-                }));
-              },
-            }}
-          >
-            <Index />
+          <ThemeProvider>
+            <UserProvider>
+              <Index />
+            </UserProvider>
           </ThemeProvider>
         </BrowserRouter>
       </>

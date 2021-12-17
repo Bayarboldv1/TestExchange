@@ -1,12 +1,13 @@
+// import { instance as axios } from "../AxiosInterceptor";
 import axios from "axios";
-let base_url = "http://192.168.1.103:8080/api/gam/v1/withdraw/";
+let base_url = "http://192.168.10.171:8080/api/gam/v1/withdraw/";
 let url = base_url;
 
 class Services {
-  withdrawFiat = () => {
+  withdrawFiat = (data) => {
     return new Promise(function (resolve, reject) {
       axios
-        .post(`${url}fiat`)
+        .post(`${url}fiat`, data)
         .then((response) => {
           resolve(response);
         })

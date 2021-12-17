@@ -1,5 +1,5 @@
 import axios from "axios";
-let base_url = "http://192.168.1.103:8080/api/gam/v1/exchange/";
+let base_url = "/api/gam/v1/exchange/";
 let url = base_url;
 
 class Services {

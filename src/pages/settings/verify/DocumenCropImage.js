@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { dataURLtoFile } from "./verify/helper";
+import { dataURLtoFile } from "./Share/helper";
 import { Modal } from "antd";
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";

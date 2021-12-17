@@ -32,6 +32,7 @@ const SiteContextProvider = ({ children }) => {
       storeData.lastName = data.lastName;
       storeData.mobileNumber = data.mobileNumber;
       storeData.firstName = data.firstName;
+      storeData.username = data.username;
       sessionStorage.setItem("us", JSON.stringify(storeData));
     }
   };

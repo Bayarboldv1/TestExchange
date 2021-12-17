@@ -26,20 +26,24 @@ export default function OtpModal({ email, phone, ...props }) {
         message.warning("Баталгаажуулах код 6 оронтой байна.");
         return;
       }
+
       const values = {
         emailOTP: mailOTP,
         phoneOTP: phoneOTP,
         email: email,
         phone: phone,
       };
+
       setloading(true);
       console.log("data", values);
       Service.verify(values)
         .then((res) => {
           if (res.data.status === 200) {
-            message.success("Амжилттай солигдлоо");
+            message.success(
+              "Бүртгэл амжилттай баталгаажлаа. Нэвтрэх хэсэгт имэйл, нууц үгээ ашиглан нэвтэрч орно уу."
+            );
             props.onHide();
-            history.push("/change-bank");
+            history.push("/login");
           } else {
             message.warning(
               "Таны хүсэлтийг биелүүлж чадсангүй. Дахин оролдоно уу ?"

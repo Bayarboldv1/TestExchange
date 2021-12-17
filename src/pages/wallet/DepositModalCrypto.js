@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Modal, message } from "antd";
-import Service from "../../service/wallet/index";
+import Service from "../../service/deposit/index";
 
 const Title = () => {
   return <span style={{ fontWeight: "bold" }}>Крипто цэнэглэлт</span>;
@@ -14,7 +14,7 @@ function DepositModalCrypto({ hide, show, data }) {
 
   const getAddress = () => {
     try {
-      Service.getCryptoAddress(data.id)
+      Service.getDepositTokenAddress(data.id)
         .then((res) => {
           if (res) {
             if (res) {

@@ -6,20 +6,22 @@ import InModal from "./modals/Modal";
 import OutModal from "./modals/OutModal";
 
 export default function MarketsList() {
-  const [modalShow, setModalShow] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
+  // const [modalShow, setModalShow] = useState(false);
+  // const [modalOpen, setModalOpen] = useState(false);
+  const [select, setSelect] = useState(false);
+  const [data, setData] = useState(null);
   return (
     <>
       <div className="markets ">
-        <OutModal show={modalShow} onHide={() => setModalShow(false)} />
-        <InModal show={modalOpen} onHide={() => setModalOpen(false)} />
+        {/* <OutModal show={modalShow} onHide={() => setModalShow(false)} />
+        <InModal show={modalOpen} onHide={() => setModalOpen(false)} /> */}
         <div className="container-fluid">
           <div className="row ">
             <div className="col-md-12">
               <div className="markets-pair-list">
                 <div className="row">
                   <div className="col-md-9 ml-5">
-                    <TotalMnt />
+                    <TotalMnt data={data} />
                   </div>
 
                   <div className="col-md-2 mt-5">
@@ -36,7 +38,7 @@ export default function MarketsList() {
                     </button>
                   </div>
                 </div>
-                <div className="lists table-responsive ">
+                {/* <div className="lists table-responsive ">
                   <table className="table-responsive star-active w-75">
                     <thead>
                       <tr>
@@ -67,7 +69,6 @@ export default function MarketsList() {
                         </td>
                         <td>7394.06</td>
                         <td>321</td>
-
                         <td className="green">+0.78%</td>
                         <td>
                           <button
@@ -113,7 +114,6 @@ export default function MarketsList() {
                             Орлого
                           </button>
                         </td>
-                        {/* sasasa */}
                         <td>
                           <button
                             onClick={() => {
@@ -128,7 +128,7 @@ export default function MarketsList() {
                       </tr>
                     </tbody>
                   </table>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

@@ -1,12 +1,22 @@
+// import { instance as axios } from "../AxiosInterceptor";
+// import axios from 'axios';
+
 import axios from "axios";
-let base_url = "http://192.168.1.103:8080/api/gam/v1/auth/";
+let base_url = "http://192.168.10.171:8080/api/gam/v1/auth/";
 let url = base_url;
 
 class Services {
   login = (data) => {
     return new Promise(function (resolve, reject) {
       axios
-        .get(`${url}signin`, data)
+        .post(
+          `${url}signin` +
+            "?username=" +
+            data.username +
+            "&password=" +
+            data.password,
+          null
+        )
         .then((response) => {
           resolve(response);
         })
@@ -96,7 +106,7 @@ class Services {
   mailOTP = (data) => {
     return new Promise(function (resolve, reject) {
       axios
-        .get(`${url}signup/mail/otp/resend`, data)
+        .get(`${url}signup/mail/otp/resend`, { params: { email: data } })
         .then((response) => {
           resolve(response);
         })
@@ -109,7 +119,7 @@ class Services {
   smsOTP = (data) => {
     return new Promise(function (resolve, reject) {
       axios
-        .get(`${url}signup/sms/otp/resend`, data)
+        .get(`${url}signup/sms/otp/resend`, { params: { phone: data } })
         .then((response) => {
           resolve(response);
         })

@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { Form, Input, message } from "antd";
 import Service from "../../service/withdraw/index";
-export default function OutModal(props, { id }) {
+import { UserConsumer } from "../../context/UserContext";
+
+export default function OutMnt(props) {
   const [data, setData] = useState("");
   const [loading, setloading] = useState(false);
   const [form] = Form.useForm();
@@ -16,7 +18,6 @@ export default function OutModal(props, { id }) {
       const values = await form.validateFields();
       values["address"] = values.address.trim();
       values["price"] = values.price.trim();
-      values["tokenId"] = id();
       console.log("ss", values);
       setloading(true);
       Service.withdrawFiat(values)
@@ -42,15 +43,20 @@ export default function OutModal(props, { id }) {
         <Modal.Title id="contained-modal-title-vcenter">Зарлага</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h6> Зарлага хийх крипто данс</h6>
+        <h6> Зарлага хийх данс</h6>
         <Form form={form}>
           <Form.Item name="address" className="form-group">
-            <Input
-              type="text"
-              className="form-control"
-              placeholder="Хаяг"
-              required
-            />
+            <Input type="text" className="form-control" required disabled>
+              <UserConsumer>
+                {({ user }) => {
+                  return (
+                    <span style={{ fontWeight: "bold" }} className="white">
+                      {user.user.userInfo.bankAccount}
+                    </span>
+                  );
+                }}
+              </UserConsumer>
+            </Input>
           </Form.Item>
           <div className="row justify-content-between ml-1 mr-1">
             <h6>Зарлага гаргах дүн</h6>

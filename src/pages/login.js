@@ -1,23 +1,22 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory, Link, NavLink } from "react-router-dom";
 import { Form, Input, message, Button, Alert } from "antd";
-import { setSession } from "../components/helper/utils";
-import { SiteContext } from "../context/SiteContext/SiteContext";
 import Service from "../service/auth/index";
-import LoggedIn from "../components/guard/LoggedIn";
+import { UserContext } from "../context/UserContext";
 import OtpModal from "../components/modals/OtpModal";
 
 function Login() {
   let history = useHistory();
   const [loading, setloading] = useState(false);
+  const userContext = useContext(UserContext);
   const [form] = Form.useForm();
   const [modalShow, setModalShow] = useState(false);
-  // const { loginHandler, setUserData } = useContext(SiteContext);
-  const [isVerify, setisVerify] = useState({
-    laoding: false,
-    show: false,
-    email: "",
-  });
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
+  useEffect(() => {
+    userContext.dispatch({ user: null, auth: false, token: null }, "login");
+  }, [])
 
   const onLogin = async () => {
     try {
@@ -26,31 +25,24 @@ function Login() {
       console.log("data", values);
       Service.login(values)
         .then((res) => {
-          if (res.data?.token) {
-            // setUserData(res.data);
-            // loginHandler(true);
-            setSession(res.data.token, JSON.stringify(res.data));
-            if (!res.data.idVerification || !res.data.mobileVerification) {
-              // return history.push("/");
-              return setModalShow(true);
-            }
-            return history.push("/");
-          }
           setloading(false);
-          return message.error("Нэвтрэх үйлдэл хийж чадсангүй");
+          if (res.data.response.status === 202) {
+            message.error('Хэрэглэгчийн мэдээлэл баталгаажаагүй байна.');
+            setEmail(res.data.userInfo.email);
+            setPhone(res.data.userInfo.phone);
+            setModalShow(true);
+          } else if (res.data.response.status === 200) {
+            userContext.dispatch({ user: res.data, auth: true, token: res.data.accessToken }, "login");
+            history.push('/');
+            message.success('Амжилттай нэвтэрлээ.');
+          } else {
+            message.error('Нэвтэрхэд алдаа гарлаа.');
+          }
         })
         .catch((e) => {
           setloading(false);
-          if (e.response?.status === 406) {
-            setisVerify({
-              ...isVerify,
-              show: true,
-              email: e.response.data.value,
-            });
-            return message.error(e.response.data.error);
-          }
           if (e.response?.status === 400) {
-            return message.error(e.response.data.error);
+            return message.error(e.response.data.message);
           } else {
             return message.error("Нэвтрэх үйлдэл хийж чадсангүй1");
           }
@@ -62,7 +54,7 @@ function Login() {
 
   return (
     <>
-      <OtpModal show={modalShow} onHide={() => setModalShow(false)} />
+      <OtpModal email={email} phone={phone} show={modalShow} onHide={() => setModalShow(false)} />
       <div className="vh-100 d-flex justify-content-center">
         <div className="form-access my-auto">
           <span>Нэвтрэх</span>
@@ -126,4 +118,4 @@ function Login() {
   );
 }
 
-export default LoggedIn(Login);
+export default Login;

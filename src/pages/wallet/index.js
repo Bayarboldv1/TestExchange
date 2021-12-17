@@ -3,7 +3,8 @@ import Service from "../../service/wallet/index";
 import TokenCheck from "../../components/guard/TokenCheck";
 import TotalMnt from "./TotalMnt";
 import MarketsList from "../../components/MarketsList";
-// import Balance from './Balance';
+import Balance from "./Balance";
+import { message } from "antd";
 
 function Wallet() {
   const [data, setData] = useState(null);
@@ -23,17 +24,18 @@ function Wallet() {
           }
         })
         .catch((e) => {
-          return;
+          return message.error("Cant get balance!!");
         });
     } catch (e) {
-      return;
+      return message.error("Cant get balance!");
     }
   };
 
   return (
     <>
       <div>
-        <MarketsList />
+        <TotalMnt />
+        <Balance data={data} loading={loading} getBalance={getBalance} />
       </div>
     </>
   );

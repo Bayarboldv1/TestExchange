@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Table, Space, message } from "antd";
+import { Table, Space, message, Switch } from "antd";
 import {
   numberToFixed,
   numberWithCommas,
@@ -9,39 +9,32 @@ import DepositModalCrypto from "./DepositModalCrypto";
 import DepositModalMnt from "./DepositModalMnt";
 import { SiteContext } from "../../context/SiteContext/SiteContext";
 import MobileBalance from "./MobileBalance";
+import balance from "../../assets/css/balance.css";
 // import DepositConverter from "./DepositConvertor";
 
+import InModal from "../../components/modals/Modal";
+import ModalMnt from "../../components/modals/ModalMNT";
+import WithdrawModal from "./WithdrawModal";
+import OutModal from "../../components/modals/OutModal";
+import OutMnt from "../../components/modals/OutMnt";
+
 function Balance({ data, loading, getBalance }) {
-  const {
-    state: { currentUser },
-  } = useContext(SiteContext);
+  const currentUser = useContext(SiteContext);
   const [quantityData, setquantityData] = useState({});
   const [isMobile, setisMobile] = useState(false);
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMnt, setModalMnt] = useState(false);
+  const [withdraw, setWithdraw] = useState(false);
+  const [outModal, setOutModal] = useState(false);
+  const [outMnt, setOutMnt] = useState(false);
   const [cryptoType, setcryptoType] = useState({
     mnt: false,
     crypto: false,
     cryptoData: null,
   });
-  const [converter, setconverter] = useState({
-    data: null,
-    show: false,
-  });
   useEffect(() => {
     checkClientWidth();
-
-    let obj = {};
-    data &&
-      Object.keys(data).forEach((i) => {
-        let result = 0;
-        data[i].forEach((item) => {
-          if (item.quantity) {
-            result += item.quantity;
-          }
-        });
-        obj[data[i][0]["code"]] = result;
-      });
-    setquantityData(obj);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const checkClientWidth = () => {
@@ -58,24 +51,15 @@ function Balance({ data, loading, getBalance }) {
   const arrData = () => {
     try {
       let arr = [];
-      let obj = {};
-      Object.keys(data).forEach((i) => {
-        let result = 0;
-        data[i].forEach((item) => {
-          if (item.quantity) {
-            result += item.quantity;
-          }
-        });
-        obj[data[i][0]["code"]] = result;
-        if (data[i][0]["code"] === "MNT" || data[i][0]["code"] === "RTXC") {
-          arr.push(data[i][0]);
-        }
+      data.map((d, index) => {
+        arr.push(d);
       });
       return arr;
     } catch (e) {
       return [];
     }
   };
+
   const onDepositHandler = (values) => {
     try {
       if (!currentUser.mobileVerification || currentUser.idVerification !== 3) {
@@ -103,29 +87,17 @@ function Balance({ data, loading, getBalance }) {
       return;
     }
   };
-
-  const onConverterHideHandler = () => {
-    try {
-      setconverter({ ...converter, show: false, data: null });
-    } catch (e) {
-      return;
-    }
-  };
-
-  const onConverter = (value) => {
-    try {
-      setconverter({ ...converter, show: true, data: value });
-    } catch (e) {
-      return;
-    }
-  };
+  const [dat, setDat] = useState("");
+  const [outId, setOutId] = useState("");
   const columns = [
     {
-      title: "Хослол",
-      dataIndex: "name",
-      key: "name",
+      title: "ВАЛЮТ",
+      dataIndex: "tokenName",
+      key: "tokenName",
       render: (text, record) => (
-        <div className="retex--wallet--pair--icon">{text}</div>
+        <div className="retex--wallet--pair--icon">
+          {record.tokenName + " (" + record.tokenTicker + ")"}
+        </div>
       ),
     },
     {
@@ -134,7 +106,8 @@ function Balance({ data, loading, getBalance }) {
       key: "balance",
       render: (text, record) =>
         numberWithCommas(
-          numberToFixed(record.balance, pairFormat(record.code || 0))
+          record.tokenBalance,
+          pairFormat(record.tokenTicker || 0)
         ),
     },
 
@@ -144,7 +117,12 @@ function Balance({ data, loading, getBalance }) {
       key: "inOrder",
       render: (text, record) =>
         numberWithCommas(
-          numberToFixed(quantityData[record.code], pairFormat(record.code || 0))
+          numberToFixed(
+            record.tokenOrderedBalance === null
+              ? 0
+              : record.tokenOrderedBalance,
+            pairFormat(record.tokenTicker || 0)
+          )
         ),
     },
     {
@@ -153,41 +131,64 @@ function Balance({ data, loading, getBalance }) {
       key: "activeTotal",
       render: (text, record) =>
         numberWithCommas(
-          numberToFixed(
-            record.balance - quantityData[record.code],
-            pairFormat(record.code || 0)
-          )
+          record.tokenBalance,
+          pairFormat(record.tokenTicker || 0)
         ),
     },
     {
-      title: "Үйлдэл",
+      title: "Гүйлгээ",
       key: "action",
       render: (text, record) => (
         <Space size="middle">
-          {record.isDepositable === 1 && record.code === "MNT" && (
-            <button
-              type="button"
-              className="btn retex--wallet--btn btn-sm"
-              onClick={() => onDepositHandler(record)}
-            >
-              Данс цэнэглэх
-            </button>
-          )}
+          {record.tokenDeposit ? (
+            record.tokenId === 1 ? (
+              <button
+                onClick={(e) => setModalMnt(true)}
+                type="button"
+                className="btn retex--wallet--btn btn-sm"
+              >
+                Орлого
+              </button>
+            ) : (
+              <button
+                // style={{ color: "blue" }}
+                onClick={() => {
+                  return setModalOpen(true), setDat(record.tokenId);
+                }}
+                type="button"
+                className="btn retex--wallet--btn btn-sm"
+              >
+                Орлого
+              </button>
+            )
+          ) : null}
+          {record.tokenWithdraw ? (
+            record.tokenId === 1 ? (
+              <button
+                onClick={(e) => setOutMnt(true)}
+                type="button"
+                className="btn retex--wallet--btn btn-sm"
+              >
+                Зарлага
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="btn retex--wallet--btn btn-sm"
+                onClick={() => {
+                  return setOutModal(true), setOutId(record.tokenId);
+                }}
+              >
+                Зарлага
+              </button>
+            )
+          ) : null}
 
-          {record.isWithdrawable === 1 && record.code === "MNT" && (
+          {record.tokenExchange ? (
             <button type="button" className="btn retex--wallet--btn btn-sm">
-              Зарлага
+              Арилжаа
             </button>
-          )}
-          {record.code === "USDT" && (
-            <button
-              type="button"
-              className="btn retex--wallet--btn btn-sm"
-              onClick={() => onConverter(record)}
-            >
-              MNT болгох
-            </button>
-          )}
+          ) : null}
         </Space>
       ),
     },
@@ -210,46 +211,38 @@ function Balance({ data, loading, getBalance }) {
     }
   };
 
-  const refreshWallet = () => {
-    getBalance();
-  };
   return (
-    <div className="col-md-12 mt-4 mb-5">
+    <div className="Tbale mt-4 mb-5 d-flex justify-content-center ">
+      {/* Crypto orlogo */}
+      <InModal
+        tokenId={dat}
+        show={modalOpen}
+        onHide={() => setModalOpen(false)}
+        // show={cryptoType.crypto}
+      />
+      <ModalMnt
+        show={modalMnt}
+        onHide={() => setModalMnt(false)}
+        data={cryptoType.cryptoData}
+      />
+      {/* crypto zarlaga */}
+      <OutModal id={outId} show={outModal} onHide={() => setOutModal(false)} />
+
+      <OutMnt id={outId} show={outModal} onHide={() => setOutModal(false)} />
+
       {!isMobile && (
         <Table
-          className="retex--wallet"
+          className="ant ml-5 mr-5 col-md-9 table-response "
           columns={columns}
           dataSource={arrData()}
           pagination={false}
           rowKey="id"
           loading={loading}
+          rowClassName={(record) => (record.tokenName = "#08AE4E")}
         />
       )}
 
       {isMobile && mobileRender()}
-
-      {cryptoType.crypto && (
-        <DepositModalCrypto
-          show={cryptoType.crypto}
-          hide={() => onDepositHideHandler()}
-          data={cryptoType.cryptoData}
-        />
-      )}
-      {cryptoType.mnt && (
-        <DepositModalMnt
-          show={cryptoType.mnt}
-          hide={() => onDepositHideHandler()}
-        />
-      )}
-
-      {/* {converter.show && (
-        <DepositConverter
-          show={converter.show}
-          hide={() => onConverterHideHandler()}
-          data={converter.data}
-          refreshWallet={refreshWallet}
-        />
-      )} */}
     </div>
   );
 }

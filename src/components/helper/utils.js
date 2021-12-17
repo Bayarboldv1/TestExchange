@@ -182,11 +182,7 @@ export function formatForCoinWhithoutComma(x, len) {
 
 const pairFormatList = {
   MNT: 2,
-  USD: 2,
-  ARDX: 2,
-  USDT: 6,
-  ICTG: 2,
-  RTXC: 2,
+  BTC: 8,
 };
 
 export const pairFormat = (val) => {

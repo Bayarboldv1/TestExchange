@@ -278,3 +278,35 @@
   border: 1px solid grey;
   background-color: red;
 }
+
+//----------> id
+.container .header .idTitle {
+  color: #0f7dff;
+}
+
+.container .body .card {
+  height: 300px;
+  background-color: #2b2e3b;
+}
+
+.container .body .card p {
+  display: flex;
+  color: #ffffff;
+  justify-content: center;
+}
+.container .body .card .uploadCard {
+  display: flex;
+  justify-content: center;
+}
+.container .body .card .fileUpload {
+  display: flex;
+  height: 200px;
+  width: 200px;
+  border-radius: 25px;
+  border: 1px dashed rgb(255, 255, 255);
+  justify-content: center;
+}
+
+::-webkit-file-upload-button {
+  display: none;
+}

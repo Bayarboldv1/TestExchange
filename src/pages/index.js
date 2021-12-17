@@ -18,9 +18,10 @@ import NewsDetails from "./news-details";
 import Signup from "./signup/signup";
 import Notfound from "./notfound";
 import Test from "./test";
-import Id from "./settings/id";
+import Document from "./settings/verify/Document";
 import ChangeBank from "./settings/changeBank";
-import Wallet from "./wallet/index";
+import ProtectedRoute from "./ProtectedRoute";
+import Wallet from "../pages/wallet/index";
 
 export default function Index() {
   const [loading, setloading] = useState(true);
@@ -47,31 +48,17 @@ export default function Index() {
   }
   return (
     <>
-      <Layout>
-        <Switch>
-          <Route exact path="/">
-            <Exchange />
-          </Route>
-          <Route path="/markets">
-            <Markets />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-          <Route path="/wallet">
-            <Wallet />
-          </Route>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/reset" component={Reset} />
+        <Layout>
+          <Route exact path="/" component={Exchange} />
+          <ProtectedRoute path="/profile" component={Profile} />
+          <ProtectedRoute path="/wallet" component={Wallet} />
+          <ProtectedRoute path="/document" component={Document} />
           <Route path="/settings">
             <Settings />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/signup">
-            <Signup />
-          </Route>
-          <Route path="/reset">
-            <Reset />
           </Route>
           <Route path="/otp-verify">
             <OtpVerify />
@@ -94,14 +81,11 @@ export default function Index() {
           <Route path="/test">
             <Test />
           </Route>
-          <Route path="/id">
-            <Id />
-          </Route>
           <Route path="/change-bank">
             <ChangeBank />
           </Route>
-        </Switch>
-      </Layout>
+        </Layout>
+      </Switch>
     </>
   );
 }
