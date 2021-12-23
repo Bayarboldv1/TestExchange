@@ -1,6 +1,6 @@
-// import { instance as axios } from "../AxiosInterceptor";
-import axios from "axios";
-let base_url = "http://192.168.10.171:8080/api/gam/v1/settings/";
+import { instance as axios } from "../AxiosInterceptor";
+// import axios from "axios";
+let base_url = "/api/gam/v1/settings/";
 let url = base_url;
 
 class Services {
@@ -33,7 +33,7 @@ class Services {
   createEmailOtp = (data) => {
     return new Promise(function (resolve, reject) {
       axios
-        .get(`${url}email/otp/create`, data)
+        .get(`${url}email/otp/create?email=${data}`)
         .then((response) => {
           resolve(response);
         })
@@ -45,7 +45,7 @@ class Services {
   createPhoneOtp = (data) => {
     return new Promise(function (resolve, reject) {
       axios
-        .get(`${url}phone/otp/create`, data)
+        .get(`${url}phone/otp/create?phone=${data}`)
         .then((response) => {
           resolve(response);
         })

@@ -1,4 +1,4 @@
-import axios from "axios";
+import { instance as axios } from "../AxiosInterceptor";
 let base_url = "/api/gam/v1/exchange/";
 let url = base_url;
 
@@ -6,7 +6,7 @@ class Services {
   cancelExchange = (data) => {
     return new Promise(function (resolve, reject) {
       axios
-        .get(`${url}cancel`, data)
+        .get(`${url}cancel`, { params: { exchangeId: data } })
         .then((response) => {
           resolve(response);
         })
@@ -29,10 +29,10 @@ class Services {
     });
   };
 
-  getActiveExchange = (data) => {
+  getActiveExchange = (page, size) => {
     return new Promise(function (resolve, reject) {
       axios
-        .get(`${url}list/active`, data)
+        .get(`${url}list/active`, { params: { page: page, size: size } })
         .then((response) => {
           resolve(response);
         })

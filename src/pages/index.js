@@ -1,12 +1,8 @@
-import React, { useEffect, useContext, useState } from "react";
-import { SiteContext } from "../context/SiteContext/SiteContext";
-import { removeSession } from "../components/helper/utils";
+import React, { useEffect } from "react";
 import Layout from "../components/Layout";
-import { Switch, Route } from "react-router-dom";
-import Exchange from "../pages/exchange";
-import Markets from "../pages/markets";
+import { Switch, Route, Redirect } from "react-router-dom";
+import Exchange from "./exchange";
 import Profile from "./profile";
-// import Wallet from "./wallet";
 import Settings from "./settings";
 import Login from "./login";
 import Reset from "./reset";
@@ -22,30 +18,13 @@ import Document from "./settings/verify/Document";
 import ChangeBank from "./settings/changeBank";
 import ProtectedRoute from "./ProtectedRoute";
 import Wallet from "../pages/wallet/index";
+import Deposit from "../pages/deposit/Deposit";
+import Withdraw from "../pages/withdraw/Withdraw";
+import { SocketConsumer } from "../context/SocketContext";
+import { ExchangeProvider } from "../context/ExchangeContext/ExchangeContext";
+import { BalanceProvider } from "../context/BalanceContext/BalanceContext";
 
 export default function Index() {
-  const [loading, setloading] = useState(true);
-  // const { loginHandler, setUserData } = useContext(SiteContext);
-
-  useEffect(() => {
-    checkUserExists();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  const checkUserExists = () => {
-    let token = sessionStorage.getItem("at");
-    let data = sessionStorage.getItem("us");
-    if (token && data) {
-      // setUserData(JSON.parse(data));
-      // loginHandler(true);
-    } else {
-      removeSession();
-      // loginHandler(false);
-    }
-    setloading(false);
-  };
-  if (loading) {
-    return "";
-  }
   return (
     <>
       <Switch>
@@ -53,13 +32,23 @@ export default function Index() {
         <Route path="/signup" component={Signup} />
         <Route path="/reset" component={Reset} />
         <Layout>
-          <Route exact path="/" component={Exchange} />
+          <Route exact path="/">
+            <ExchangeProvider>
+              <Exchange />
+            </ExchangeProvider>
+          </Route>
+          <Route exact path="/exchange">
+            <ExchangeProvider>
+              <Exchange />
+            </ExchangeProvider>
+          </Route>
           <ProtectedRoute path="/profile" component={Profile} />
           <ProtectedRoute path="/wallet" component={Wallet} />
+          <ProtectedRoute path="/deposit/:tokenId" component={Deposit} />
+          <ProtectedRoute path="/withdraw" component={Withdraw} />
+          <ProtectedRoute path="/withdraw/:tokenId" component={Withdraw} />
           <ProtectedRoute path="/document" component={Document} />
-          <Route path="/settings">
-            <Settings />
-          </Route>
+          <ProtectedRoute path="/settings" component={Settings} />
           <Route path="/otp-verify">
             <OtpVerify />
           </Route>

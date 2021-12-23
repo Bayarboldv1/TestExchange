@@ -16,7 +16,7 @@
   font-weight: 400;
 }
 .market-history tbody {
-  min-height: 470px;
+  // min-height: 470px;
   overflow-y: auto;
   display: block;
 }
@@ -36,6 +36,7 @@
 .market-history {
   border: 1px solid #e0e3eb;
   border-radius: 2px;
+  height: 245px;
 }
 
 .orders-book table,
@@ -56,16 +57,38 @@
   font-size: 12px;
 }
 .orders-book tbody tr {
-  height: 23px;
+  // height: 23px;
   // margin-top: -2px;
 }
 
 .orders-book tbody td {
   border: none;
-  height: 20px;
+  // height: 20px;
   font-size: 10px;
 }
 .orders-book {
   border: 1px solid #e0e3eb;
   border-radius: 2px;
+}
+
+.history-order {
+  tr {
+    color: black !important;
+  }
+}
+
+.history-order-dark {
+  td {
+    border-top: 1px solid #2a2e39 !important;
+  }
+  tr {
+    color: #8fa3cc !important;
+  }
+  .pagination .page-link {
+    background-color: #1a1c2a !important;
+    border-color: #2a2e39;
+  }
+  .pagination .active span {
+    color: #8fa3cc;
+  }
 }

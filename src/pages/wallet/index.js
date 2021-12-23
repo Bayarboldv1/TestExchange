@@ -1,43 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Service from "../../service/wallet/index";
 import TokenCheck from "../../components/guard/TokenCheck";
 import TotalMnt from "./TotalMnt";
 import MarketsList from "../../components/MarketsList";
 import Balance from "./Balance";
 import { message } from "antd";
+import { BalanceContext } from "../../context/BalanceContext/BalanceContext";
+import { ThemeContext } from "../../context/ThemeContext/ThemeContext";
 
 function Wallet() {
-  const [data, setData] = useState(null);
-  const [loading, setloading] = useState(false);
+
+  const { setBalanceList } = useContext(BalanceContext);
+  const { data } = useContext(ThemeContext);
 
   useEffect(() => {
-    getBalance();
+    setBalanceList();
   }, []);
-  const getBalance = () => {
-    try {
-      setloading(true);
-      Service.getWalletBalance()
-        .then((res) => {
-          if (res) {
-            setloading(false);
-            setData(res.data);
-          }
-        })
-        .catch((e) => {
-          return message.error("Cant get balance!!");
-        });
-    } catch (e) {
-      return message.error("Cant get balance!");
-    }
-  };
 
   return (
-    <>
-      <div>
+    <div className={"_wallet " + (data.theme === 'dark' ? "_wallet-dark" : "")}>
+      <div className="_container col-12 col-sm-12 col-md-11 col-lg-10 col-xl-10">
         <TotalMnt />
-        <Balance data={data} loading={loading} getBalance={getBalance} />
+        <Balance />
       </div>
-    </>
+    </div>
   );
 }
 

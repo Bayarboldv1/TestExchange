@@ -6,14 +6,16 @@ export const instance = axios.create();
 
 instance.interceptors.request.use(
   async (req) => {
-    if (req.url.includes("/auth/signin")) {
-      req.headers["Content-type"] = "application/x-www-form-urlencoded";
+
+    if (req.url.includes('/auth/signin')) {
+      req.headers['Content-type'] = "application/x-www-form-urlencoded";
     } else {
-      req.headers["content-type"] = "application/json";
+      req.headers['content-type'] = 'application/json';
     }
+
     const user = JSON.parse(sessionStorage.getItem("user"));
     if (user.auth) {
-      req.headers["Authorization"] = `Bearer ${user.token}`;
+      req.headers['Authorization'] = `Bearer ${user.token}`;
     }
 
     return req;

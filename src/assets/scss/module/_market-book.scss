@@ -19,19 +19,19 @@
   border-bottom: 1px solid #aaa8a7;
 }
 .order-book tbody tr {
-  height: 23px;
+  // height: 23px;
   // margin-top: -2px;
 }
 
 .order-book tbody td {
   border: none;
-  height: 20px;
+  // height: 20px;
   font-size: 10px;
 }
 .order-book {
   border: 1px solid #e0e3eb;
   border-radius: 2px;
-  width: 110%;
+  // width: 110%;
 }
 .red-bg-80,
 .red-bg-60,
@@ -62,28 +62,28 @@
   position: absolute;
   content: "";
   background: #de262663;
-  right: 0;
+  left: 0;
   top: 0;
-  width: 280px;
-  height: 45px;
+  width: 80%;
+  height: 100%;
 }
 .red-bg-60:after {
-  width: 240px;
+  width: 60%;
 }
 .red-bg-40:after {
-  width: 200px;
+  width: 40%;
 }
 .red-bg-20:after {
-  width: 160px;
+  width: 20%;
 }
 .red-bg-10:after {
-  width: 120px;
+  width: 10%;
 }
 .red-bg-8:after {
-  width: 80px;
+  width: 8%;
 }
 .red-bg-5:after {
-  width: 50px;
+  width: 5%;
 }
 .red-bg:after {
   width: 30px;
@@ -100,28 +100,28 @@
   position: absolute;
   content: "";
   background: #26de8163;
-  right: 0;
+  left: 0;
   top: 0;
-  width: 280px;
-  height: 45px;
+  width: 80%;
+  height: 100%;
 }
 .green-bg-60:after {
-  width: 240px;
+  width: 60%;
 }
 .green-bg-40:after {
-  width: 200px;
+  width: 40%;
 }
 .green-bg-20:after {
-  width: 160px;
+  width: 20%;
 }
 .green-bg-10:after {
-  width: 120px;
+  width: 10%;
 }
 .green-bg-8:after {
-  width: 80px;
+  width: 8%;
 }
 .green-bg-5:after {
-  width: 50px;
+  width: 5%;
 }
 .green-bg:after {
   width: 30px;

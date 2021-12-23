@@ -1,0 +1,54 @@
+.withdraw-container {
+    margin: 20px;
+}
+
+.withdraw-container .withdraw-address {
+    justify-content: center;
+    display: flex;
+}
+
+.withdraw-container .withdraw-address .center-container {
+    // box-shadow: 0px 0px 30px #0000000f;
+    .ant-tabs-tab:hover {
+        color: #fcd535 !important;
+    }
+    .ant-tabs-tab-active .ant-tabs-tab-btn {
+        color: #fcd535 !important;
+    }
+}
+
+.withdraw-crypto {
+    margin: 20px;
+}
+
+.withdraw-crypto .wc-item {
+    justify-content: space-between;
+    align-items: flex-start;
+    display: flex;
+    margin-bottom: 30px;
+    .wc-title {
+        padding-right: 20px;
+        width: 80px;
+    }
+    .ant-radio-button-wrapper:hover {
+        color: #fcd535 !important;
+    }
+    
+    .ant-radio-button-wrapper-checked:hover {
+        color: white !important;
+    }
+    
+    .ant-radio-button-wrapper-checked {
+        border-color: #fcd535 !important;
+        background-color: #fcd535 !important;
+    }
+
+    .ant-radio-button-wrapper-checked::before {
+        background-color: #fcd535 !important;
+    }
+
+    .ant-btn:hover {
+        border-color: #fcd535 !important;
+        color: #fcd535 !important;
+    }
+}

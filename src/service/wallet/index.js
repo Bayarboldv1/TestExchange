@@ -1,6 +1,6 @@
 import { instance as axios } from "../AxiosInterceptor";
 // import axios from "axios";
-let base_url = "http://192.168.10.171:8080/api/gam/v1/wallet/";
+let base_url = "/api/gam/v1/wallet/";
 let url = base_url;
 
 class Services {
@@ -30,6 +30,21 @@ class Services {
     });
   };
 
+  getBalancePair = (fromTokenId, toTokenId) => {
+    return new Promise(function (resolve, reject) {
+      axios
+        .get(`${url}balance/pair`, {
+          params: { fromTokenId: fromTokenId, toTokenId: toTokenId },
+        })
+        .then((response) => {
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  };
+
   getDepisotList = (data) => {
     return new Promise(function (resolve, reject) {
       axios
@@ -45,8 +60,9 @@ class Services {
 
   getTokenDetail = (data) => {
     return new Promise(function (resolve, reject) {
+      console.log("da", data);
       axios
-        .get(`${url}token/detail`, data)
+        .get(`${url}token/detail?tokenId=${data}`)
         .then((response) => {
           resolve(response);
         })

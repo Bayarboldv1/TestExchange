@@ -1,6 +1,6 @@
-// import { instance as axios } from "../AxiosInterceptor";
-import axios from "axios";
-let base_url = "http://192.168.10.171:8080/api/gam/v1/user/";
+import { instance as axios } from "../AxiosInterceptor";
+// import axios from "axios";
+let base_url = "/api/gam/v1/user/";
 let url = base_url;
 
 class Services {

@@ -1,3 +1,15 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .market-trade input {
   border: 1px solid #e0e3eb;
   font-weight: 300;
@@ -11,7 +23,7 @@
   border-radius: 2px;
   margin-left: 15px;
   width: 95.5%;
-  height: 320px;
+  height: 300px;
 }
 .market-trade .tab-content {
   height: 358px;
@@ -52,30 +64,37 @@
   border-bottom: 1px solid transparent;
 }
 .market-trade-list li a {
-  background: #eff2f6;
   color: #4a4a4a;
-  font-weight: 300;
-  padding: 3px 15px;
-  border-radius: 5px;
+  text-decoration: none;
 }
 
 .market-trade-list li {
   display: inline-block;
-  margin-right: 7px;
-  margin-bottom: 7px;
+  background: #eff2f6;
+  flex: 1;
+  margin-right: 10px;
+  text-align: center;
+  font-weight: 300;
+  border-radius: 2px;
+  border: 1px solid lightgrey;
+  padding: 3px 0px;
 }
 .market-trade-list li:last-child {
   margin-right: 0;
 }
-.market-trade-buy .market-trade-list li a:hover {
+.market-trade-buy .market-trade-list li:hover {
   text-decoration: none;
   background: #26a69a;
-  color: #fff;
+  a {
+    color: #fff;
+  }
 }
-.market-trade-sell .market-trade-list li a:hover {
+.market-trade-sell .market-trade-list li:hover {
   text-decoration: none;
   background: #ef5350;
-  color: #fff;
+  a {
+    color: #fff;
+  }
 }
 
 .market-trade button.buy,
@@ -102,8 +121,23 @@
 }
 
 .market-trade-list {
-  margin-bottom: 23px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  margin-top: 10px;
 }
+
+.market-trade-list-dark {
+  li {
+    background: #1a1c2a;
+    border: 1px solid #2a2e39 !important;
+  }
+  a {
+    background: none !important;
+    color: #8fa3cc !important;
+  }
+}
+
 .market-trade-item {
   width: 100%;
 }
@@ -113,11 +147,32 @@
   width: 100%;
 }
 
-.market-trade-buy {
-  padding: 0 15px 0 0;
+.market-trade-buy,
+.market-trade-sell {
+  input {
+    outline: none !important;
+    color: #8fa3cc !important;
+  }
 }
 
-.market-trade-sell {
-  padding: 0 0 0 15px;
-  border-left: 1px solid #e0e3eb;
+.market-trade-buy button {
+  background-color: #26de81;
+  margin-top: 10px;
+  color: white;
+  width: 100%;
+}
+
+.market-trade-sell button {
+  background-color: #ef5350;
+  margin-top: 10px;
+  color: white;
+  width: 100%;
+}
+
+.input-group-append-dark {
+  span {
+    background-color: #1a1c2a !important;
+    color: #8fa3cc !important;
+    border: 1px #2a2e39 solid !important;
+  }
 }

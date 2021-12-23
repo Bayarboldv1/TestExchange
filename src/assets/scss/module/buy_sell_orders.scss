@@ -1,0 +1,73 @@
+.buy-sell-orders-heading {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 14px;
+    border-bottom: 1px solid lightgray;
+}
+.buy-sell-orders-heading-dark {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 14px;
+    border-bottom: 0.5px solid #1e2030;
+}
+.buy-sell-orders {
+    font-size: 12px;
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+    height: calc(100% - 30px);
+}
+.buy-sell-orders .header {
+    height: 30px;
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+}
+.buy-sell-orders .orders {
+    height: calc(100% - 30px);
+}
+.buy-sell-orders .orders .sell {
+    height: calc((100% - 30px) / 2 - 4px) !important;
+    max-height: calc((100% - 30px) / 2 - 4px) !important;
+    overflow-y: hidden !important;
+    margin: 2px 0px 2px 0px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+.buy-sell-orders .orders .buy {
+    height: calc((100% - 30px) / 2 - 4px) !important;
+    max-height: calc((100% - 30px) / 2 - 4px) !important;
+    overflow-y: hidden !important;
+    margin: 2px 0px 0px 0px;
+}
+.buy-sell-orders .orders .center-header {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    height: 30px;
+    margin: 0px 10px;
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+}
+
+.buy-sell-orders .orders .center-header-dark {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    height: 30px;
+    margin: 0px 10px;
+    border-bottom: 1px solid #2a2e39;
+    border-top: 1px solid #2a2e39;
+}
+.buy-sell-orders .order-item {
+    padding: 0px 10px;
+}
+
+.buy-sell-orders .sell .order-item {
+    margin-bottom: 0;
+}

@@ -4,16 +4,19 @@ import { Modal } from "antd";
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 
-function DocumentCropImage({ imgz, show, handleCancel, setfiles, files }) {
+function DocumentCropImage({ show, handleCancel, setfiles, files, picture }) {
   const [cropper, setCropper] = useState();
+
   const getCropData = () => {
     try {
       if (typeof cropper !== "undefined") {
-        let base64 = cropper.getCroppedCanvas().toDataURL();
+        let img = cropper.getCroppedCanvas().toDataURL("image/jpeg", 0.9);
         setfiles({
           ...files,
-          [imgz.type]: dataURLtoFile(base64, "newimage"),
+          [picture.type]: dataURLtoFile(img, "newimage"),
         });
+        // img.rotate(90)
+
         handleCancel();
       }
     } catch (e) {
@@ -23,20 +26,33 @@ function DocumentCropImage({ imgz, show, handleCancel, setfiles, files }) {
 
   return (
     <Modal
+      bodyStyle={{ height: 420 }}
       title="Бичиг баримт баталгаажуулалт"
       visible={show}
       onCancel={() => handleCancel()}
-      footer={null}
+      footer={
+        <div className="w-100 mt-2">
+          <button className="btn btn-primary" onClick={() => getCropData()}>
+            Сонгох
+          </button>
+          <button
+            className="btn btn-danger ml-2"
+            onClick={() => handleCancel()}
+          >
+            Буцах
+          </button>
+        </div>
+      }
       style={{ width: "auto" }}
     >
-      <div className="img_crop_wrapper mtop10">
-        {imgz.path && (
+      <div className="img_crop_wrapper mtop10 ">
+        {picture.path && (
           <div className="img_crop_section">
             <Cropper
-              style={{ height: "100%", width: "auto" }}
+              style={{ height: 400, width: "auto" }}
               initialAspectRatio={1}
               preview=".img-preview"
-              src={imgz.path}
+              src={picture.path}
               viewMode={1}
               guides={true}
               minCropBoxHeight={10}
@@ -51,17 +67,6 @@ function DocumentCropImage({ imgz, show, handleCancel, setfiles, files }) {
             />
           </div>
         )}
-        <div className="w-100 mt-2">
-          <button className="btn btn-primary" onClick={() => getCropData()}>
-            Сонгох
-          </button>
-          <button
-            className="btn btn-danger ml-2"
-            onClick={() => handleCancel()}
-          >
-            Буцах
-          </button>
-        </div>
       </div>
     </Modal>
   );

@@ -1,6 +1,6 @@
 import { instance as axios } from "../AxiosInterceptor";
 // import axios from "axios";
-let base_url = "http://192.168.10.171:8080/api/gam/v1/deposit/";
+let base_url = "/api/gam/v1/deposit/";
 let url = base_url;
 
 class Services {
@@ -17,10 +17,10 @@ class Services {
     });
   };
 
-  getDepositTokenAddress = (data) => {
+  getDepositTokenAddress = (address) => {
     return new Promise(function (resolve, reject) {
       axios
-        .get(`${url}token/address`, data)
+        .get(`${url}token/address?tokenId=${address}`)
         .then((response) => {
           resolve(response);
         })

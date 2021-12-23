@@ -150,7 +150,20 @@ function Signup(item) {
                   {renderBank()}
                 </select>
               </Form.Item>
-              <Form.Item name="bankAccount" className="form-group">
+              <Form.Item
+                name="bankAccount"
+                className="form-group"
+                rules={[
+                  {
+                    min: 9,
+                    message: "Дансны дугаарын урт 9 орноос багагүй байх ёстой",
+                  },
+                  {
+                    max: 15,
+                    message: "Дансны дугаарын урт 15 орноос ихгүй байх ёстой",
+                  },
+                ]}
+              >
                 <Input
                   type="number"
                   className="form-control"
@@ -197,7 +210,36 @@ function Signup(item) {
                   autoComplete="new-password"
                   type="password"
                   className="form-control"
-                  placeholder="Нууц үг"
+                  placeholder="Нууц үг "
+                />
+              </Form.Item>
+              <Form.Item
+                name="confirm"
+                className="form-group"
+                dependencies={["password"]}
+                rules={[
+                  {
+                    required: true,
+                    message: "Заавал бөглөнө үү !",
+                  },
+                  ({ getFieldValue }) => ({
+                    validator(_, value) {
+                      if (!value || getFieldValue("password") === value) {
+                        return Promise.resolve();
+                      }
+                      return Promise.reject(
+                        new Error("Давтан нууц үг буруу байна ")
+                      );
+                    },
+                  }),
+                ]}
+                hasFeedback
+              >
+                <Input
+                  autoComplete="new-password"
+                  type="password"
+                  className="form-control"
+                  placeholder=" Давтан нууц үг"
                 />
               </Form.Item>
               <Form.Item>

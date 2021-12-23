@@ -33,7 +33,7 @@ function Login() {
             setModalShow(true);
           } else if (res.data.response.status === 200) {
             userContext.dispatch({ user: res.data, auth: true, token: res.data.accessToken }, "login");
-            history.push('/');
+            history.push('/exchange');
             message.success('Амжилттай нэвтэрлээ.');
           } else {
             message.error('Нэвтэрхэд алдаа гарлаа.');

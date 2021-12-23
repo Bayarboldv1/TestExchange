@@ -20,85 +20,85 @@ export default function OtpModal({ email, phone, ...props }) {
     setPhoneOTP(event.target.value);
   };
 
-  const onCheck = async () => {
-    try {
-      if (mailOTP.length != 6 || phoneOTP.length != 6) {
-        message.warning("Баталгаажуулах код 6 оронтой байна.");
-        return;
-      }
+  // const onCheck = async () => {
+  //   try {
+  //     if (mailOTP.length != 6 || phoneOTP.length != 6) {
+  //       message.warning("Баталгаажуулах код 6 оронтой байна.");
+  //       return;
+  //     }
 
-      const values = {
-        emailOTP: mailOTP,
-        phoneOTP: phoneOTP,
-        email: email,
-        phone: phone,
-      };
+  //     const values = {
+  //       emailOTP: mailOTP,
+  //       phoneOTP: phoneOTP,
+  //       email: email,
+  //       phone: phone,
+  //     };
 
-      setloading(true);
-      console.log("data", values);
-      Service.verify(values)
-        .then((res) => {
-          if (res.data.status === 200) {
-            message.success(
-              "Бүртгэл амжилттай баталгаажлаа. Нэвтрэх хэсэгт имэйл, нууц үгээ ашиглан нэвтэрч орно уу."
-            );
-            props.onHide();
-            history.push("/login");
-          } else {
-            message.warning(
-              "Таны хүсэлтийг биелүүлж чадсангүй. Дахин оролдоно уу ?"
-            );
-          }
-          setloading(false);
-        })
-        .catch((e) => {
-          setloading(false);
-          e.response?.status === 400
-            ? message.error(e.response?.data?.message)
-            : message.error("Алдаа гарлаа");
-        });
-    } catch (errorInfo) {
-      return;
-    }
-  };
+  //     setloading(true);
+  //     console.log("data", values);
+  //     Service.verify(values)
+  //       .then((res) => {
+  //         if (res.data.status === 200) {
+  //           message.success(
+  //             "Бүртгэл амжилттай баталгаажлаа. Нэвтрэх хэсэгт имэйл, нууц үгээ ашиглан нэвтэрч орно уу."
+  //           );
+  //           props.onHide();
+  //           history.push("/login");
+  //         } else {
+  //           message.warning(
+  //             "Таны хүсэлтийг биелүүлж чадсангүй. Дахин оролдоно уу ?"
+  //           );
+  //         }
+  //         setloading(false);
+  //       })
+  //       .catch((e) => {
+  //         setloading(false);
+  //         e.response?.status === 400
+  //           ? message.error(e.response?.data?.message)
+  //           : message.error("Алдаа гарлаа");
+  //       });
+  //   } catch (errorInfo) {
+  //     return;
+  //   }
+  // };
 
-  const mail = async () => {
-    setResendLoading(true);
-    Service.mailOTP(email)
-      .then((res) => {
-        setResendLoading(false);
-        if (res.data.status === 200) {
-          message.success(res.data.message);
-        } else {
-          message.error("Алдаа гарлаа.");
-        }
-      })
-      .catch((e) => {
-        setResendLoading(false);
-        e.response?.status === 400
-          ? message.error(e.response?.data?.error)
-          : message.error("Алдаа гарлаа");
-      });
-  };
+  // const mail = async () => {
+  //   setResendLoading(true);
+  //   Service.mailOTP(email)
+  //     .then((res) => {
+  //       setResendLoading(false);
+  //       if (res.data.status === 200) {
+  //         message.success(res.data.message);
+  //       } else {
+  //         message.error("Алдаа гарлаа.");
+  //       }
+  //     })
+  //     .catch((e) => {
+  //       setResendLoading(false);
+  //       e.response?.status === 400
+  //         ? message.error(e.response?.data?.error)
+  //         : message.error("Алдаа гарлаа");
+  //     });
+  // };
 
-  const sms = async () => {
-    setResendLoading(true);
-    Service.smsOTP(phone)
-      .then((res) => {
-        setResendLoading(false);
-        if (res.data.status === 200) {
-          message.success(res.data.message);
-        } else {
-          message.error("Алдаа гарлаа.");
-        }
-      })
-      .catch((e) => {
-        setResendLoading(false);
-        e.response?.status === 400
-          ? message.error(e.response?.data?.error)
-          : message.error("Алдаа гарлаа");
-      });
-  };
+  // const sms = async () => {
+  //   setResendLoading(true);
+  //   Service.smsOTP(phone)
+  //     .then((res) => {
+  //       setResendLoading(false);
+  //       if (res.data.status === 200) {
+  //         message.success(res.data.message);
+  //       } else {
+  //         message.error("Алдаа гарлаа.");
+  //       }
+  //     })
+  //     .catch((e) => {
+  //       setResendLoading(false);
+  //       e.response?.status === 400
+  //         ? message.error(e.response?.data?.error)
+  //         : message.error("Алдаа гарлаа");
+  //     });
+  // };
 
   return (
     <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
@@ -125,7 +125,7 @@ export default function OtpModal({ email, phone, ...props }) {
             onChange={(e) => onChangeMailOTP(e)}
           />
           <button
-            onClick={() => (resendLoading ? "" : mail())}
+            // onClick={() => (resendLoading ? "" : mail())}
             className=" ml-3 col-3 btn btn-link "
           >
             {resendLoading ? "Илгээж байна ..." : "Илгээх"}
@@ -147,7 +147,7 @@ export default function OtpModal({ email, phone, ...props }) {
             onChange={(e) => onChangePhoneOTP(e)}
           />
           <button
-            onClick={() => (resendLoading ? "" : sms())}
+            // onClick={() => (resendLoading ? "" : sms())}
             className="ml-3 col-3 btn btn-link "
           >
             {resendLoading ? "Илгээж байна ..." : "Илгээх"}
@@ -155,7 +155,9 @@ export default function OtpModal({ email, phone, ...props }) {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={() => (loading ? "" : onCheck())}>
+        <Button
+        //  onClick={() => (loading ? "" : onCheck())}
+        >
           {loading ? "Баталгаажуулж байна..." : "Баталгаажуулах"}
         </Button>
       </Modal.Footer>

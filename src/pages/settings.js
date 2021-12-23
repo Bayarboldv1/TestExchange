@@ -4,7 +4,8 @@ import { Link, useHistory } from "react-router-dom";
 import EmailModal from "../components/modals/emailModal";
 import NumberlModal from "../components/modals/numberModal";
 import { UserConsumer } from "../context/UserContext";
-import { ThemeConsumer } from "../context/ThemeContext";
+import { ThemeConsumer } from "../context/ThemeContext/ThemeContext";
+import { Button } from "@mui/material";
 
 export default function Settings() {
   const [modalShow, setModalShow] = useState(false);
@@ -23,7 +24,7 @@ export default function Settings() {
               return (
                 <h3
                   className="card-title"
-                  style={{ color: data.theme === "dark" ? "black" : "white" }}
+                  style={{ color: data.theme === "dark" ? "white" : "black" }}
                 >
                   Тохиргоо
                 </h3>
@@ -34,12 +35,15 @@ export default function Settings() {
           <div className="settings-notification">
             <ul>
               <li>
-                <div className="notification-info">
-                  <p>Хэрэглэгчийн мэдээлэл баталгаажуулах</p>
-                  <span>
-                    Хэрэглэгчийн мэдээлэл баталгаажсанаар зарлага, арилжаа хийх
-                    эрх нээгдэнэ
-                  </span>
+                <div className="notification-info row ">
+                  <img className="ml-2 mr-2" src={"svg/avatar.svg"} />
+                  <div>
+                    <p>Хэрэглэгчийн мэдээлэл баталгаажуулах</p>
+                    <span>
+                      Хэрэглэгчийн мэдээлэл баталгаажсанаар зарлага, арилжаа
+                      хийх эрх нээгдэнэ
+                    </span>
+                  </div>
                 </div>
                 <div className="custom-control ">
                   <UserConsumer>
@@ -101,18 +105,24 @@ export default function Settings() {
                 </div>
               </li>
               <li>
-                <div className="notification-info">
-                  <p>Банкны мэдээлэл</p>
-                  <span>Одоо ашиглагдаж буй данс : </span>
-                  <UserConsumer>
-                    {({ user }) => {
-                      return (
-                        <span style={{ fontWeight: "bold" }} className="white">
-                          {user.user.userInfo.bankAccount}
-                        </span>
-                      );
-                    }}
-                  </UserConsumer>
+                <div className="notification-info row">
+                  <img className="ml-2 mr-2" src={"svg/bank.svg"} />
+                  <div>
+                    <p>Банкны мэдээлэл</p>
+                    <span>Одоо ашиглагдаж буй данс : </span>
+                    <UserConsumer>
+                      {({ user }) => {
+                        return (
+                          <span
+                            style={{ fontWeight: "bold" }}
+                            className="white"
+                          >
+                            {user.user.userInfo.bankAccount}
+                          </span>
+                        );
+                      }}
+                    </UserConsumer>
+                  </div>
                 </div>
                 <div className="custom-control">
                   <Link to="/change-bank">
@@ -123,18 +133,24 @@ export default function Settings() {
                 </div>
               </li>
               <li>
-                <div className="notification-info">
-                  <p>Имэйл </p>
-                  <span>Одоо ашиглагдаж буй: </span>
-                  <UserConsumer>
-                    {({ user }) => {
-                      return (
-                        <span style={{ fontWeight: "bold" }} className="white">
-                          {user.user.userInfo.email}
-                        </span>
-                      );
-                    }}
-                  </UserConsumer>
+                <div className="notification-info row">
+                  <img className="ml-2 mr-2" src={"svg/email.svg"} />
+                  <div>
+                    <p>Имэйл </p>
+                    <span>Одоо ашиглагдаж буй: </span>
+                    <UserConsumer>
+                      {({ user }) => {
+                        return (
+                          <span
+                            style={{ fontWeight: "bold" }}
+                            className="white"
+                          >
+                            {user.user.userInfo.email}
+                          </span>
+                        );
+                      }}
+                    </UserConsumer>
+                  </div>
                 </div>
                 <div className="custom-control custom-switch">
                   <div className=" custom-control">
@@ -149,18 +165,24 @@ export default function Settings() {
                 </div>
               </li>
               <li>
-                <div className="notification-info">
-                  <p>Утасны дугаар</p>
-                  <span>Одоо ашиглагдаж буй: </span>
-                  <UserConsumer>
-                    {({ user }) => {
-                      return (
-                        <span style={{ fontWeight: "bold" }} className="white">
-                          {user.user.userInfo.phone}
-                        </span>
-                      );
-                    }}
-                  </UserConsumer>
+                <div className="notification-info row">
+                  <img className="ml-2 mr-2" src={"svg/phone.svg"} />
+                  <div>
+                    <p>Утасны дугаар</p>
+                    <span>Одоо ашиглагдаж буй: </span>
+                    <UserConsumer>
+                      {({ user }) => {
+                        return (
+                          <span
+                            style={{ fontWeight: "bold" }}
+                            className="white"
+                          >
+                            {user.user.userInfo.phone}
+                          </span>
+                        );
+                      }}
+                    </UserConsumer>
+                  </div>
                 </div>
                 <div className="custom-control custom-switch">
                   <div className="custom-control">
@@ -175,11 +197,14 @@ export default function Settings() {
                 </div>
               </li>
               <li>
-                <div className="notification-info">
-                  <p>2FA (2 алхамт баталгаажуулалт)</p>
-                  <span>
-                    Илүү найдвартай хамгаалалт. Google authenticator ашиглана.
-                  </span>
+                <div className="notification-info row">
+                  <img className="ml-2 mr-2" src={"svg/bank.svg"} />
+                  <div>
+                    <p>2FA (2 алхамт баталгаажуулалт)</p>
+                    <span>
+                      Илүү найдвартай хамгаалалт. Google authenticator ашиглана.
+                    </span>
+                  </div>
                 </div>
                 <div className="custom-control custom-switch">
                   <button disabled className="btn btn-link btn-sm">
@@ -188,11 +213,15 @@ export default function Settings() {
                 </div>
               </li>
               <li>
-                <div className="notification-info">
-                  <p>Нэг удаагийн нууц үгээр баталгаажуулалт</p>
-                  <span>
-                    Утас, Имэйлрүү OTP(нэг удаагийн нууц үг) авч баталгаажуулах{" "}
-                  </span>
+                <div className="notification-info row">
+                  <img className="ml-2 mr-2" src={"svg/googleAuth.svg"} />
+                  <div>
+                    <p>Нэг удаагийн нууц үгээр баталгаажуулалт</p>
+                    <span>
+                      Утас, Имэйлрүү OTP(нэг удаагийн нууц үг) авч
+                      баталгаажуулах
+                    </span>
+                  </div>
                 </div>
                 <div className="custom-control custom-switch">
                   <button disabled className="btn btn-link btn-sm">
@@ -200,8 +229,9 @@ export default function Settings() {
                   </button>
                 </div>
               </li>
-              <li>
-                <div className="notification-info">
+              <li className="mb-5">
+                <div className="notification-info row">
+                  <img className="ml-2 mr-2" src={"svg/bank.svg"} />
                   <p>Хэл сонгох</p>
                 </div>
                 <div className="custom-control">

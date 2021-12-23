@@ -1,50 +1,32 @@
-import { message } from "antd";
-import { useEffect, useState } from "react";
-import { numberToFixed, numberWithCommas } from "../../components/helper/utils";
-import Service from "../../service/wallet/index";
+import { useContext, useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
+import { numberToFixed, numberWithCommas, pairFormat } from "../../components/helper/utils";
+import { BalanceContext } from "../../context/BalanceContext/BalanceContext";
+import { ThemeContext } from "../../context/ThemeContext/ThemeContext";
+
 function TotalMnt() {
-  const [loading, setloading] = useState(false);
-  const [data, setData] = useState({ totalMNT: 0 });
+
+  const { balance, setBalanceTotal } = useContext(BalanceContext);
+  const { data } = useContext(ThemeContext);
+
   useEffect(() => {
-    Service.getBalanceMNT().then((res) => {
-      console.log(res.data);
-      setData(res.data);
-    });
+    setBalanceTotal();
   }, []);
 
   return (
-    <div className="markets ">
-      <div className="container-fluid">
-        <div className="row ">
-          <div className="col-md-12">
-            <div className="markets-pair-list">
-              <div className="row">
-                <div className="col-md-9 ml-5">
-                  <div className=" header col-md mt-3 ml-3">
-                    <div className="col mt-5">
-                      <h5>Нийт үлдэгдэл</h5>
-                      <h2>{data.totalMNT}MNT</h2>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-2  mt-5">
-                  <button
-                    type="button"
-                    className="btn btn-sm btn-outline-primary page-title "
-                  >
-                    <img
-                      src="/img/time.svg"
-                      alt="time"
-                      className="retex--wallet--time"
-                    />
-                    Гүйлгээний түүх
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div className={"wallet-total " + (data.theme === 'dark' ? "wallet-total-dark" : "")}>
+      <div className="wallet-total-balances">
+        <div className="">
+          <h7>Нийт үлдэгдэл</h7>
+          <h5>{"≈ " + (balance.balanceTotal.totalMNT ? numberWithCommas(
+            numberToFixed(
+              balance.balanceTotal.totalMNT,
+              pairFormat('MNT' || 0)
+            )
+          ) : 0.00) + " ₮"}</h5>
         </div>
       </div>
+      <Button variant="outline-secondary">Гүйлгээний түүх</Button>
     </div>
   );
 }

@@ -1,158 +1,64 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { ExchangeContext } from "../context/ExchangeContext/ExchangeContext";
+import { ThemeContext } from "../context/ThemeContext/ThemeContext";
 
-export default function OrderBook() {
+export default function OrderBook({ ...props }) {
+
+  const { exchange } = useContext(ExchangeContext);
+  const { data } = useContext(ThemeContext);
+  const pair = exchange.selectedPair && exchange.selectedPair.pairName ? exchange.selectedPair.pairName : undefined;
+  const buy = exchange.pairBuy;
+  const sell = exchange.pairSell;
+
+  // useEffect(() => {
+  //   console.log("sdadrararara")
+  //   setBuyList(buy);
+  // }, [buy])
+
+  console.log("sdaaa we ene odoo", data)
+
   return (
-    <>
-      <div className="order-book stage mb15">
-        <div className="stage">
-          <h2 className="heading">Захиалга</h2>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Үнэ(BTC)</th>
-                <th>Хэмжээ(ETH)</th>
-                <th>Нийт(ETH)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="red-bg-80">
-                <td className="red">0.022572</td>
-                <td>1.253415</td>
-                <td>15.27648</td>
-              </tr>
-              <tr className="red-bg-60">
-                <td className="red">0.020371</td>
-                <td>1.205415</td>
-                <td>15.25648</td>
-              </tr>
-              <tr className="red-bg-60">
-                <td className="red">0.020371</td>
-                <td>1.205415</td>
-                <td>15.25648</td>
-              </tr>
-              <tr className="red-bg-60">
-                <td className="red">0.020371</td>
-                <td>1.205415</td>
-                <td>15.25648</td>
-              </tr>
-              <tr className="red-bg-60">
-                <td className="red">0.020371</td>
-                <td>1.205415</td>
-                <td>15.25648</td>
-              </tr>
-
-              <tr className="red-bg-40">
-                <td className="red">0.023572</td>
-                <td>1.645415</td>
-                <td>15.23648</td>
-              </tr>
-              <tr className="red-bg-20">
-                <td className="red">0.032378</td>
-                <td>1.206715</td>
-                <td>15.25348</td>
-              </tr>
-              <tr className="red-bg-10">
-                <td className="red">0.022573</td>
-                <td>1.262415</td>
-                <td>15.19648</td>
-              </tr>
-              <tr className="red-bg-8">
-                <td className="red">0.154377</td>
-                <td>1.225415</td>
-                <td>15.35648</td>
-              </tr>
-              <tr className="red-bg-5">
-                <td className="red">0.120373</td>
-                <td>1.285415</td>
-                <td>15.25648</td>
-              </tr>
-              <tr className="red-bg">
-                <td className="red">0.028576</td>
-                <td>1.291415</td>
-                <td>15.26448</td>
-              </tr>
-            </tbody>
-            <thead className="ob-heading">
-              <tr>
-                <td>
-                  <span>Last Price</span>
-                  0.020367
-                </td>
-                <td>
-                  <span>USD</span>
-                  148.65
-                </td>
-                <td className="red">
-                  <span>Change</span>
-                  -0.51%
-                </td>
-              </tr>
-            </thead>
-            <tbody className="stage2">
-              <tr className="green-bg">
-                <td className="green">0.158373</td>
-                <td>1.209515</td>
-                <td>15.23248</td>
-              </tr>
-              <tr className="green-bg-5">
-                <td className="green">0.020851</td>
-                <td>1.206245</td>
-                <td>15.25458</td>
-              </tr>
-              <tr className="green-bg-8">
-                <td className="green">0.025375</td>
-                <td>1.205715</td>
-                <td>15.65648</td>
-              </tr>
-              <tr className="green-bg-8">
-                <td className="green">0.025375</td>
-                <td>1.205715</td>
-                <td>15.65648</td>
-              </tr>
-              <tr className="green-bg-8">
-                <td className="green">0.025375</td>
-                <td>1.205715</td>
-                <td>15.65648</td>
-              </tr>
-              <tr className="green-bg-8">
-                <td className="green">0.025375</td>
-                <td>1.205715</td>
-                <td>15.65648</td>
-              </tr>
-              <tr className="green-bg-8">
-                <td className="green">0.025375</td>
-                <td>1.205715</td>
-                <td>15.65648</td>
-              </tr>
-              <tr className="green-bg-10">
-                <td className="green">0.020252</td>
-                <td>1.205495</td>
-                <td>15.24548</td>
-              </tr>
-              <tr className="green-bg-20">
-                <td className="green">0.020373</td>
-                <td>1.205415</td>
-                <td>15.25648</td>
-              </tr>
-              <tr className="green-bg-40">
-                <td className="green">0.020156</td>
-                <td>1.207515</td>
-                <td>15.28948</td>
-              </tr>
-              <tr className="green-bg-60">
-                <td className="green">0.540375</td>
-                <td>1.205915</td>
-                <td>15.25748</td>
-              </tr>
-              <tr className="green-bg-80">
-                <td className="green">0.020372</td>
-                <td>1.205415</td>
-                <td>15.25648</td>
-              </tr>
-            </tbody>
-          </table>
+    <div style={{ height: '100%', maxHeight: '100%', border: data.theme === 'dark' ? '1px solid #1e2030' : '1px solid lightgray', margin: '5px 0px', borderRadius: '2px', color: data.theme === 'dark' ? "#8fa3cc" : "black", backgroundColor: data.theme === 'dark' ? '#1a1c2a' : 'white' }}>
+      <div className={data.theme === 'dark' ? "buy-sell-orders-heading-dark" : "buy-sell-orders-heading"}>Авах, зарах захиалгууд</div>
+      <div className="buy-sell-orders">
+        <div className="header row no-gutters">
+          <div className="col-4" style={{ textAlign: 'left' }}>Үнэ({pair && pair.includes("/") ? pair.split("/")[1] : ""})</div>
+          <div className="col-4" style={{ textAlign: 'right' }}>Хэмжээ({pair && pair.includes("/") ? pair.split("/")[0] : ""})</div>
+          <div className="col-4" style={{ textAlign: 'right' }}>Нийт({pair && pair.includes("/") ? pair.split("/")[1] : ""})</div>
+        </div>
+        <div className="orders">
+          <div className="sell">
+            {
+              sell.map(s => {
+                return (
+                  <div className="order-item row no-gutters red-bg-60">
+                    <div className="col-4 red" style={{ textAlign: 'left' }}>{s.price}</div>
+                    <div className="col-4" style={{ textAlign: 'right' }}>{s.quantity}</div>
+                    <div className="col-4" style={{ textAlign: 'right' }}>{Math.trunc(s.total)}</div>
+                  </div>
+                )
+              })
+            }
+          </div>
+          <div className={data.theme === 'dark' ? "center-header-dark" : "center-header"}>
+            <div>14000000</div>
+            <div>+4%</div>
+          </div>
+          <div className="buy">
+            {
+              buy.map(s => {
+                return (
+                  <div className="order-item row no-gutters green-bg-40">
+                    <div className="col-4 green" style={{ textAlign: 'left' }}>{s.price}</div>
+                    <div className="col-4" style={{ textAlign: 'right' }}>{s.quantity}</div>
+                    <div className="col-4" style={{ textAlign: 'right' }}>{Math.trunc(s.total)}</div>
+                  </div>
+                )
+              })
+            }
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

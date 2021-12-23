@@ -57,9 +57,29 @@
 }
 
 .container-fluid .exchangeDiv .secondHeader .form-group1 {
-  margin-bottom: 5px;
+  // margin-bottom: 5px;
 }
 
 .container-fluid .exchangeDiv .secondHeader {
   color: grey;
+}
+
+.exchangeDiv {
+  select {
+
+  }
+  option {
+
+  }
+}
+
+.exchangeDiv-dark {
+  select {
+    background-color: #1a1c2a;
+    border-color: #2a2e39;
+    color: #8fa3cc;
+  }
+  option {
+
+  }
 }

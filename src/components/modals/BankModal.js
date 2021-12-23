@@ -6,7 +6,7 @@ import Service from "../../service/user/index";
 import Services from "../../service/auth/index";
 import { UserConsumer } from "../../context/UserContext";
 
-export default function BankModal(props) {
+export default function BankModal({ verifyCode, ...props }) {
   const [banks, setBanks] = useState("");
   const [form] = Form.useForm();
   const [loading, setloading] = useState(false);
@@ -35,57 +35,20 @@ export default function BankModal(props) {
     }
   };
 
-  const mail = async () => {
-    setResendLoading(true);
-    Services.mailOTP(email)
-      .then((res) => {
-        setResendLoading(false);
-        if (res.data.status === 200) {
-          message.success(res.data.message);
-        } else {
-          message.error("Алдаа гарлаа.");
-        }
-      })
-      .catch((e) => {
-        setResendLoading(false);
-        e.response?.status === 400
-          ? message.error(e.response?.data?.error)
-          : message.error("Алдаа гарлаа");
-      });
-  };
-
-  const sms = async () => {
-    setResendLoading(true);
-    Services.smsOTP(phone)
-      .then((res) => {
-        setResendLoading(false);
-        if (res.data.status === 200) {
-          message.success(res.data.message);
-        } else {
-          message.error("Алдаа гарлаа.");
-        }
-      })
-      .catch((e) => {
-        setResendLoading(false);
-        e.response?.status === 400
-          ? message.error(e.response?.data?.error)
-          : message.error("Алдаа гарлаа");
-      });
-  };
-
   const onChange = async () => {
     try {
       const values = await form.validateFields();
       values["bankId"] = values.bankId.trim();
       values["bankAccount"] = values.bankAccount.trim();
-      values["emailOTP"] = values.emailOTP.trim();
-      values["phoneOTP"] = values.phoneOTP.trim();
+      values["verifiedCode"] = verifyCode;
+
       setloading(true);
       console.log("BankChangeOTP:", values);
       Service.changeBankInfo(values)
         .then((res) => {
           setloading(false);
           if (res.data.status === 200) {
+            props.onHide();
             message.success("Амжилттай солигдлоо");
           } else {
             message.error("Алдаа гарлаа");
@@ -128,7 +91,20 @@ export default function BankModal(props) {
               </select>
             </Form.Item>
             <span>Дансны дугаар</span>
-            <Form.Item name="bankAccount" className="bank">
+            <Form.Item
+              name="bankAccount"
+              className="bank"
+              rules={[
+                {
+                  min: 9,
+                  message: "Дансны дугаарын урт 9 орноос багагүй байх ёстой",
+                },
+                {
+                  max: 15,
+                  message: "Дансны дугаарын урт 15 орноос ихгүй байх ёстой",
+                },
+              ]}
+            >
               <div className="form-group">
                 <input
                   type="number"
@@ -139,54 +115,6 @@ export default function BankModal(props) {
               </div>
             </Form.Item>
           </Form>
-
-          <span> Email баталгаажуулалт</span>
-          <Form.Item
-            name="mailOTP"
-            style={{
-              justifyContent: "space-between",
-              alignItems: "center",
-              display: "flex",
-              marginBottom: 20,
-            }}
-          >
-            <div className="row">
-              <Input
-                type="number"
-                className="form-control col ml-3"
-                placeholder="Баталгаажуулалтын 6 оронтой код"
-              />
-              <button
-                onClick={() => (resendLoading ? "" : mail())}
-                className=" ml-3 col-3 btn btn-link "
-              >
-                {resendLoading ? "..." : "Илгээх"}
-              </button>
-            </div>
-          </Form.Item>
-          <span> Утас баталгаажуулалт {props.email}</span>
-          <Form.Item
-            name="phoneOTP"
-            style={{
-              justifyContent: "space-between",
-              alignItems: "center",
-              display: "flex",
-            }}
-          >
-            <div className="row">
-              <Input
-                type="number"
-                className="form-control col ml-3"
-                placeholder="Баталгаажуулалтын 6 оронтой код"
-              />
-              <button
-                onClick={() => (resendLoading ? "" : sms())}
-                className="ml-3 col-3 btn btn-link "
-              >
-                {resendLoading ? "..." : "Илгээх"}
-              </button>
-            </div>
-          </Form.Item>
         </Modal.Body>
 
         <Modal.Footer>

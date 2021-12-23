@@ -4,7 +4,7 @@ import TradingViewWidget, { Themes } from "react-tradingview-widget";
 export default function TradingChart() {
   return (
     <>
-      <div className="main-chart mb15">
+      <div className="main-chart">
         <TradingViewWidget
           symbol="BITSTAMP:BTCUSD"
           theme={Themes.LIGHT}
