@@ -13,6 +13,13 @@ import { BalanceProvider } from "./context/BalanceContext/BalanceContext";
 // const socket = socketIOClient("http://192.168.1.107:5000", { path: "/gam_socket/", parser , secure: true });
 // const socket = socketIOClient("https://ws.coinmart.mn", { path: "/gam_socket/", parser , secure: true });
 
+///
+//
+//
+//
+//
+///// Boldko______________________________2
+
 export default class App extends Component {
 
   render() {
